@@ -11,7 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-var db = require('./config/db');
+var db = require('./model/db');
 
 var absPath = __dirname + '/public';
 
