@@ -11,7 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-var db = require('./model/db');
+//var db = require('./model/db');
 
 var absPath = __dirname + '/public';
 
@@ -39,7 +39,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.sendFile(absPath + '/views/error.html');
+    res.sendFile(absPath + '/views/404.html');
   });
 }
 
@@ -47,7 +47,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.sendFile(absPath + '/views/error.html');
+  res.sendFile(absPath + '/views/404.html');
 });
 
 
