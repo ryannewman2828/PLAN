@@ -20,6 +20,7 @@ passport.use(new LocalStrategy({
             }
 
             // Return if password is wrong
+            if (!user.verifyPassword(password)) {
                 return done(null, false, {
                     message: 'Password is wrong'
                 });
