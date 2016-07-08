@@ -4,13 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+var passport = require('passport');
+
+var db = require('./server/model/db');
+var userPassport = require('./server/config/passport');
 
 var routes = require('./server/routes/index');
 
 var app = express();
-
-var db = require('./server/model/db');
 
 var absPath = __dirname;
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 app.use('/', routes);
 
 // catch 404 and forward to error handler

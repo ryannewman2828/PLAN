@@ -13,9 +13,12 @@
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "mongodb": "^1.4.4",
+    "mongoose": "^4.5.3",
     "monk": "^3.0.4",
     "crypto": "^0.0.3",
     "ejs": "^2.4.2",
-    "jsonwebtoken": "^7.0.1"
+    "jsonwebtoken": "^7.0.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }
