@@ -16,6 +16,6 @@
     "monk": "^3.0.4",
     "crypto": "^0.0.3",
     "ejs": "^2.4.2",
-    "json-web-token": "^2.0.3"
+    "jsonwebtoken": "^7.0.1"
   }
 }
