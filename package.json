@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./main/bin/www",
+    "test": "gulp test"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -26,6 +27,8 @@
     "gulp-concat": "~2.6.0",
     "gulp-uglify": "^1.5.4",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.2"
+    "gulp-sass": "^2.3.2",
+    "gulp-mocha": "^2.2.0",
+    "chai": "^3.5.0"
   }
 }
