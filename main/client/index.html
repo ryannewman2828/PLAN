@@ -1,21 +1,15 @@
-<!doctype html>
-<html ng-app>
-   <head>
-      <title>Angular JS</title>
-      <script src = "lib/angular/angular.js"></script>
-      <link rel="stylesheet" href="stylesheets/main.css">
-      
-   </head>
-   <body>
-      
-      <h2>Node Web Demo Sample Application</h2>
-      <p>This is a temporary starter page</p>
-      <div>
-         <label>Name:</label>
-         <input type = "text" ng-model = "yourName" placeholder = "Enter a name here">
-         <hr />
+<!DOCTYPE html>
+<html ng-app="meanApp">
+<head>
+   <base href="/">
+   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap-theme.min.css">
+</head>
+<body ng-view>
 
-         <h1>Hello {{yourName}}!</h1>
-      </div>
-   </body>
+
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular/angular-route.min.js"></script>
+
+</body>
 </html>

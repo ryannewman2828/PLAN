@@ -11,9 +11,4 @@ var ctrlAuth = require('../controllers/authentication');
 
 router.get('/profile', auth, ctrlProfile.profileRead);
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.sendFile('../../../client/index.html');
-});
-
 module.exports = router;
