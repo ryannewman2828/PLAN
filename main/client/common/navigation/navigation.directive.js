@@ -8,8 +8,7 @@
         return {
             restrict: 'EA',
             templateUrl: '/common/navigation/navigation.template.html',
-            controller: 'navigationCtrl',
-            controllerAs: 'navvm'
+            controller: 'navigationCtrl'
         };
     }
 
