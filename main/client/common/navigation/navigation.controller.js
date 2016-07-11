@@ -11,7 +11,6 @@
         vm.isLoggedIn = authentication.isLoggedIn();
 
         vm.currentUser = authentication.currentUser();
-
     }
 
 })();

@@ -6,10 +6,10 @@ var sass = require('gulp-sass');
 var mocha = require('gulp-mocha');
 
 gulp.task('scripts', function () {
-    gulp.src(['./main/client/**/*.js', '!./app_client/app.min.js'])
+    gulp.src(['./main/client/**/*.js', '!./main/client/app.min.js'])
         .pipe(concat('app.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('./main/client'))
+        //   .pipe(uglify()) // TODO: uncomment, this is for debugging purposes only
+        .pipe(gulp.dest('./main/client'));
 });
 
 gulp.task('sass', function () {
@@ -22,7 +22,7 @@ gulp.task('test', function(){
 });
 
 gulp.task('watch', function () {
-
+    gulp.watch(['./main/client/**/*.js', '!./main/client/app.min.js'], ['scripts']);
 });
 
 gulp.task('default', ['scripts', 'sass', 'watch']);
