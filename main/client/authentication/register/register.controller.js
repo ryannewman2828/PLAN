@@ -4,20 +4,19 @@
         .module('meanApp')
         .controller('registerCtrl', registerCtrl);
 
-    registerCtrl.$inject = ['$location', 'authentication'];
-    function registerCtrl($location, authentication) {
-        var vm = this;
+    registerCtrl.$inject = ['$location', '$scope', 'authentication'];
+    function registerCtrl($location, $scope, authentication) {
 
-        vm.credentials = {
+        $scope.credentials = {
             name : "",
             email : "",
             password : ""
         };
 
-        vm.onSubmit = function () {
+        $scope.onSubmit = function () {
             console.log('Submitting registration');
             authentication
-                .register(vm.credentials)
+                .register($scope.credentials)
                 .error(function(err){
                     alert(err);
                 })

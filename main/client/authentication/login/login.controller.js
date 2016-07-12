@@ -4,18 +4,17 @@
         .module('meanApp')
         .controller('loginCtrl', loginCtrl);
 
-    loginCtrl.$inject = ['$location', 'authentication'];
-    function loginCtrl($location, authentication) {
-        var vm = this;
+    loginCtrl.$inject = ['$location', '$scope', 'authentication'];
+    function loginCtrl($location, $scope, authentication) {
 
-        vm.credentials = {
+        $scope.credentials = {
             email : "",
             password : ""
         };
 
-        vm.onSubmit = function () {
+        $scope.onSubmit = function () {
             authentication
-                .login(vm.credentials)
+                .login($scope.credentials)
                 .error(function(err){
                     alert(err);
                 })

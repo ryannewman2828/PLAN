@@ -7,22 +7,18 @@
             .when('/', {
                 templateUrl: '/home/home.view.html',
                 controller: 'homeCtrl',
-                controllerAs: 'vm'
             })
             .when('/register', {
                 templateUrl: '/authentication/register/register.view.html',
                 controller: 'registerCtrl',
-                controllerAs: 'vm'
             })
             .when('/login', {
                 templateUrl: '/authentication/login/login.view.html',
                 controller: 'loginCtrl',
-                controllerAs: 'vm'
             })
             .when('/profile', {
                 templateUrl: '/profile/profile.view.html',
                 controller: 'profileCtrl',
-                controllerAs: 'vm'
             })
             .otherwise({redirectTo: '/'});
 

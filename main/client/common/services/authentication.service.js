@@ -50,6 +50,7 @@
         };
 
         login = function(user) {
+            console.log('login');
             return $http.post('/api/login', user).success(function(data) {
                 saveToken(data.token);
             });

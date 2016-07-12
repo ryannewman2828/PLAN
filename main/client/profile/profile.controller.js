@@ -4,15 +4,14 @@
         .module('meanApp')
         .controller('profileCtrl', profileCtrl);
 
-    profileCtrl.$inject = ['$location', 'meanData'];
-    function profileCtrl($location, meanData) {
-        var vm = this;
+    profileCtrl.$inject = ['$scope', 'meanData'];
+    function profileCtrl($scope, meanData) {
 
-        vm.user = {};
+        $scope.user = {};
 
         meanData.getProfile()
             .success(function(data) {
-                vm.user = data;
+                $scope.user = data;
             })
             .error(function (e) {
                 console.log(e);

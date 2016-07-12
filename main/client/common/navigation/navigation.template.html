@@ -5,8 +5,8 @@
                 <li><a href="/">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li ng-hide="navigationCtrl.isLoggedIn"><a href="login">Sign in</a></li>
-                <li ng-show="navigationCtrl.isLoggedIn"><a href="profile">{{navigationCtrl.currentUser.name}}</a></li>
+                <li ng-hide="isLoggedIn"><a href="login">Sign in</a></li>
+                <li ng-show="isLoggedIn"><a href="profile">{{currentUser.name}}</a></li>
             </ul>
         </div>
     </div>
