@@ -1,0 +1,16 @@
+<div class="navbar navbar-default">
+    <div class="container">
+        <div id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li ng-show="isLoggedIn"><a href="profile">{{currentUser.name}}</a></li> <!--TODO: Link this to the sidebar menu or just always have it extended-->
+                <li><a href="/"><img src="/photos/logo.jpg" width="42" height="42" border="0"></a></li>
+                <li ng-show="isLoggedIn"><a href="/">Play</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-hide="isLoggedIn"><a href="login">Sign in</a></li>
+                <li ng-show="isLoggedIn"><a href="/">Lore</a></li>
+                <li ng-show="isLoggedIn"><a href="/ ">Shop</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
