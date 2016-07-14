@@ -14,6 +14,7 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	credits: Number,
 	hash: String,
 	salt: String
 });
@@ -27,6 +28,11 @@ userSchema.methods.verifyPassword = function(password) {
 	var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
 	return this.hash === hash;
 };
+
+userSchema.methods.createAccount = function (password) {
+	this.credits = 0;
+	this.setPassword(password);
+}
 
 userSchema.methods.generateJwt = function () {
 	var expiry = new Date();

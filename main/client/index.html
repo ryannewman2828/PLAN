@@ -8,22 +8,10 @@
 </head>
 <body ng-view>
 
-    <div class="navbar navbar-default">
-    <div class="container">
-        <div id="navbar-main">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li ng-hide="isLoggedIn"><a href="login">Sign in</a></li>
-                <li ng-show="isLoggedIn"><a href="profile">{{currentUser.name}}</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
 <script src="/lib/angular/angular.min.js"></script>
 <script src="/lib/angular/angular-route.min.js"></script>
+    <!-- TODO: ADD jQuery -->
+    <script src="js/jquery.js"></script>
 <script src="app.min.js"></script>
 
 </body>

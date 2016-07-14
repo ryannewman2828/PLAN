@@ -8,7 +8,6 @@
     function navigationCtrl($scope, authentication) {
 
         $scope.isLoggedIn = authentication.isLoggedIn();
-        console.log($scope.isLoggedIn);
         $scope.currentUser = authentication.currentUser();
     }
 
