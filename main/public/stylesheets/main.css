@@ -1,5 +1,23 @@
+.home .slide-image {
+  width: 100%; }
+
+.home .carousel-holder {
+  margin-bottom: 30px; }
+
+.home .thumbnail {
+  padding: 0; }
+
+.home .thumbnail img {
+  width: 100%; }
+
+.home .caption {
+  height: 130px;
+  overflow: hidden; }
+
+.sidebar .list-group {
+  align-content: center; }
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
