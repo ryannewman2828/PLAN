@@ -57,6 +57,7 @@
         };
 
         logout = function() {
+            console.log("qwe");
             $window.localStorage.removeItem('token');
         };
 

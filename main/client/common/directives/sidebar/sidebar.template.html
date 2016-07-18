@@ -5,5 +5,7 @@
         <a href="#" class="list-group-item">Messages</a>
         <a href="#" class="list-group-item">Missions</a>
         <a href="#" class="list-group-item">Collection</a>
+        <a ng-hide="isLoggedIn" href="login" class="list-group-item">Sign In</a>
+        <button ng-show="isLoggedIn" ng-click="logOut()" class="list-group-item">Log Out</>
     </div>
 </div>
