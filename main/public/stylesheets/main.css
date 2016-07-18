@@ -19,6 +19,9 @@
   .sidebar .list-group button {
     text-align: center; }
 
+.navbar-nav li a {
+  line-height: 42px; }
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
