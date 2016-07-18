@@ -19,7 +19,7 @@
                     alert(err);
                 })
                 .then(function(){
-                    $location.path('profile');
+                    $location.path('/');
                 });
         };
 

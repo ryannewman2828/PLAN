@@ -15,7 +15,9 @@
   overflow: hidden; }
 
 .sidebar .list-group {
-  align-content: center; }
+  text-align: center; }
+  .sidebar .list-group button {
+    text-align: center; }
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
