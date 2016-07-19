@@ -17,7 +17,7 @@
                 controller: 'loginCtrl',
             })
             .when('/profile', {
-                templateUrl: '/profile/profile.view.html',
+                templateUrl: '/profile/profile/profile.view.html',
                 controller: 'profileCtrl',
             })
             .otherwise({redirectTo: '/'});
