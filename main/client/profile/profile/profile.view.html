@@ -3,7 +3,9 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-6">
+        <sidebar></sidebar>
+
+        <div class="col-md-4 profile">
 
             <h1 class="form-signin-heading">Your profile</h1>
 
@@ -15,6 +17,10 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Email</label>
                     <p class="form-control-static">{{ user.email }}</p>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Credits</label>
+                    <p class="form-control-static">{{ user.credits }}</p>
                 </div>
             </form>
 

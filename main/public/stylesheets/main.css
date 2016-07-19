@@ -19,6 +19,11 @@
   .sidebar .list-group button {
     text-align: center; }
 
+.navbar {
+  background-image: none;
+  border-bottom: none;
+  border-bottom-color: black; }
+
 .navbar-nav li a {
   line-height: 42px; }
 
