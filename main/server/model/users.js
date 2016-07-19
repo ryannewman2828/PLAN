@@ -29,11 +29,6 @@ userSchema.methods.verifyPassword = function(password) {
 	return this.hash === hash;
 };
 
-userSchema.methods.createAccount = function (password) {
-	this.credits = 0;
-	this.setPassword(password);
-}
-
 userSchema.methods.generateJwt = function () {
 	var expiry = new Date();
 	expiry.setDate(expiry.getDate() + DAY_IN_WEEK);

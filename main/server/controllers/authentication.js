@@ -7,8 +7,9 @@ module.exports.register = function(req, res) {
 
     user.name = req.body.name;
     user.email = req.body.email;
+    user.credits = 0;
 
-    user.createAccount(req.body.password);
+    user.setPassword(req.body.password);
 
     user.save(function(err) {
         var token;
