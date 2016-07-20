@@ -6,6 +6,7 @@ module.exports.register = function(req, res) {
     var user = new User();
 
     user.name = req.body.name;
+    user.username = req.body.username;
     user.email = req.body.email;
     user.credits = 0;
 

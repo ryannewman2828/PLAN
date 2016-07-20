@@ -7,11 +7,17 @@
     registerCtrl.$inject = ['$location', '$scope', 'authentication'];
     function registerCtrl($location, $scope, authentication) {
 
+        $scope.error = false;
+        $scope.errorMsg = "";
+
         $scope.credentials = {
             name : "",
+            username: "",
             email : "",
             password : ""
         };
+
+        $scope.confirmPass = "";
 
         $scope.onSubmit = function () {
             console.log('Submitting registration');
