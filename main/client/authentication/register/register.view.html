@@ -6,6 +6,7 @@
         <div class="col-md-6">
             <h1>Register</h1>
             <p class="lead">Already a member? Please <a href="login">log in</a> instead.</p>
+            <p ng-show="errorPresent">{{errorMsg}}</p>
             <form ng-submit="onSubmit()">
                 <div class="form-group">
                     <label for="name">Full name</label>

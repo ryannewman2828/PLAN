@@ -7,7 +7,7 @@
     registerCtrl.$inject = ['$location', '$scope', 'authentication'];
     function registerCtrl($location, $scope, authentication) {
 
-        $scope.error = false;
+        $scope.errorPresent = false;
         $scope.errorMsg = "";
 
         $scope.credentials = {
@@ -20,15 +20,30 @@
         $scope.confirmPass = "";
 
         $scope.onSubmit = function () {
-            console.log('Submitting registration');
-            authentication
-                .register($scope.credentials)
-                .error(function(err){
-                    alert(err);
-                })
-                .then(function(){
-                    $location.path('profile');
-                });
+            console.log('Checking registration...');
+
+            if($scope.confirmPass === "" ||
+                $scope.credentials.name === "" ||
+                $scope.credentials.username === "" ||
+                $scope.credentials.email === "" ||
+                $scope.credentials.password === ""){
+                $scope.errorPresent = true;
+                $scope.errorMsg = "A field or more has been left empty";
+            }
+
+            if(!$scope.errorPresent) {
+                console.log('Submitting registration');
+                authentication
+                    .register($scope.credentials)
+                    .error(function (err) {
+                        alert(err);
+                    })
+                    .then(function () {
+                        $location.path('profile');
+                    });
+            } else {
+                console.log('Registration failed due to incorrect field values');
+            }
         };
 
     }
