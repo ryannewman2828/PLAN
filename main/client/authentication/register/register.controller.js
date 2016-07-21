@@ -28,12 +28,12 @@
         $scope.onSubmit = function () {
             console.log('Checking registration...');
 
-            console.log('Submitting registration');
             authentication
                 .register($scope.credentials)
                 .error(onError)
                 .then(function () {
                     $location.path('profile');
+                    console.log('Submitting registration');
                 });
         };
 

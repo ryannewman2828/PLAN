@@ -7,6 +7,8 @@ module.exports.register = function(req, res) {
 
     /* Error checking here */
     var error = false;
+
+    // empty fields
     if(req.body.name === "" ||
     req.body.username === "" ||
     req.body.email === "" ||
@@ -18,6 +20,39 @@ module.exports.register = function(req, res) {
             "errorMessage" : "One or more fields have been left blank"
         })
     }
+
+    // non-unique username
+    User.findOne({username : req.body.username}, function (err, existingUser) {
+        if(existingUser && !error){
+            error = true;
+            res.status(400);
+            res.json({
+                "errorMessage" : "This Username already exists"
+            })
+        }
+    });
+
+    // non-unique email
+    User.findOne({email : req.body.email}, function (err, existingEmail) {
+        if(existingEmail && !error){
+            error = true;
+            res.status(400);
+            res.json({
+                "errorMessage" : "This email is already in use"
+            })
+        }
+    });
+
+    // passwords don't match
+    if(req.body.password !== req.body.confirmPass && !error){
+        error = true;
+        res.status(400);
+        res.json({
+            "errorMessage" : "Passwords don't match"
+        })
+    }
+
+    /* Error checking finished */
 
 
     if(!error) {
