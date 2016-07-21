@@ -14,36 +14,27 @@
             name : "",
             username: "",
             email : "",
-            password : ""
+            password : "",
+            confirmPass : ""
         };
 
-        $scope.confirmPass = "";
 
+        var onError = function (err) {
+            console.log('Registration failed due to incorrect field values');
+            $scope.errorPresent = true;
+            $scope.errorMsg = err.errorMessage;
+        }
+        
         $scope.onSubmit = function () {
             console.log('Checking registration...');
 
-            if($scope.confirmPass === "" ||
-                $scope.credentials.name === "" ||
-                $scope.credentials.username === "" ||
-                $scope.credentials.email === "" ||
-                $scope.credentials.password === ""){
-                $scope.errorPresent = true;
-                $scope.errorMsg = "A field or more has been left empty";
-            }
-
-            if(!$scope.errorPresent) {
-                console.log('Submitting registration');
-                authentication
-                    .register($scope.credentials)
-                    .error(function (err) {
-                        alert(err);
-                    })
-                    .then(function () {
-                        $location.path('profile');
-                    });
-            } else {
-                console.log('Registration failed due to incorrect field values');
-            }
+            console.log('Submitting registration');
+            authentication
+                .register($scope.credentials)
+                .error(onError)
+                .then(function () {
+                    $location.path('profile');
+                });
         };
 
     }
