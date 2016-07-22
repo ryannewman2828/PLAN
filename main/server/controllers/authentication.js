@@ -7,6 +7,7 @@ module.exports.register = function(req, res) {
 
     /* Error checking here */
     var error = false;
+    var errorMessage = [];
 
     // empty fields
     if(req.body.name === "" ||
@@ -16,38 +17,27 @@ module.exports.register = function(req, res) {
     req.body.confirmPass === ""){
         error = true;
         res.status(400);
-        res.json({
-            "errorMessage" : "One or more fields have been left blank"
-        })
+        errorMessage.push("One or more fields have been left blank");
     }
 
     // passwords don't match
-    if(req.body.password !== req.body.confirmPass && !error){
+    if(req.body.password !== req.body.confirmPass){
         error = true;
-        res.status(400);
-        res.json({
-            "errorMessage" : "Passwords don't match"
-        })
+        errorMessage.push("Passwords don't match");
     }
-    
+
     // non-unique username
     User.findOne({username : req.body.username}, function (err, existingUser) {
-        if(existingUser && !error){
+        if(existingUser){
             error = true;
-            res.status(400);
-            res.json({
-                "errorMessage" : "This Username already exists"
-            })
+            errorMessage.push("This Username already exists");
         }
 
         // non-unique email
         User.findOne({email : req.body.email}, function (err, existingEmail) {
-            if(existingEmail && !error){
+            if(existingEmail){
                 error = true;
-                res.status(400);
-                res.json({
-                    "errorMessage" : "This email is already in use"
-                })
+                errorMessage.push("This email is already in use");
             }
             onFinish();
         });
@@ -56,7 +46,6 @@ module.exports.register = function(req, res) {
 
 
     /* Error checking finished */
-
 
     var onFinish = function(){
         if(!error) {
@@ -74,6 +63,11 @@ module.exports.register = function(req, res) {
                 res.json({
                     "token": token
                 });
+            });
+        } else {
+            res.status(400);
+            res.json({
+                "errorMessage" : errorMessage
             });
         }
     }

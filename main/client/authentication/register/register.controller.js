@@ -8,7 +8,7 @@
     function registerCtrl($location, $scope, authentication) {
 
         $scope.errorPresent = false;
-        $scope.errorMsg = "";
+        $scope.errorMsg = [];
 
         $scope.credentials = {
             name : "",
