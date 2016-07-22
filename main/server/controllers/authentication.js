@@ -16,7 +16,6 @@ module.exports.register = function(req, res) {
     req.body.password === "" ||
     req.body.confirmPass === ""){
         error = true;
-        res.status(400);
         errorMessage.push("One or more fields have been left blank");
     }
 

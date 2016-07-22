@@ -1,7 +1,10 @@
-var mongoose = require('mongoose');
+var Mongoose = require('mongoose').Mongoose;
+var mongoose = new Mongoose();
 var dbURI = 'mongodb://username:password@ds015335.mlab.com:15335/userbase';
 
-mongoose.connect(dbURI);
+mongoose.connect(dbURI, function () {
+    
+});
 
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {
