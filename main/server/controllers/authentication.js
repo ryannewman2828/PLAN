@@ -21,6 +21,15 @@ module.exports.register = function(req, res) {
         })
     }
 
+    // passwords don't match
+    if(req.body.password !== req.body.confirmPass && !error){
+        error = true;
+        res.status(400);
+        res.json({
+            "errorMessage" : "Passwords don't match"
+        })
+    }
+    
     // non-unique username
     User.findOne({username : req.body.username}, function (err, existingUser) {
         if(existingUser && !error){
@@ -30,47 +39,43 @@ module.exports.register = function(req, res) {
                 "errorMessage" : "This Username already exists"
             })
         }
+
+        // non-unique email
+        User.findOne({email : req.body.email}, function (err, existingEmail) {
+            if(existingEmail && !error){
+                error = true;
+                res.status(400);
+                res.json({
+                    "errorMessage" : "This email is already in use"
+                })
+            }
+            onFinish();
+        });
     });
 
-    // non-unique email
-    User.findOne({email : req.body.email}, function (err, existingEmail) {
-        if(existingEmail && !error){
-            error = true;
-            res.status(400);
-            res.json({
-                "errorMessage" : "This email is already in use"
-            })
-        }
-    });
 
-    // passwords don't match
-    if(req.body.password !== req.body.confirmPass && !error){
-        error = true;
-        res.status(400);
-        res.json({
-            "errorMessage" : "Passwords don't match"
-        })
-    }
 
     /* Error checking finished */
 
 
-    if(!error) {
-        user.name = req.body.name;
-        user.username = req.body.username;
-        user.email = req.body.email;
-        user.credits = 0;
+    var onFinish = function(){
+        if(!error) {
+            user.name = req.body.name;
+            user.username = req.body.username;
+            user.email = req.body.email;
+            user.credits = 0;
 
-        user.setPassword(req.body.password);
+            user.setPassword(req.body.password);
 
-        user.save(function (err) {
-            var token;
-            token = user.generateJwt();
-            res.status(200);
-            res.json({
-                "token": token
+            user.save(function (err) {
+                var token;
+                token = user.generateJwt();
+                res.status(200);
+                res.json({
+                    "token": token
+                });
             });
-        });
+        }
     }
 };
 
