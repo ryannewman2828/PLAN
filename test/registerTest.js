@@ -2,13 +2,13 @@ var assert = require('chai').assert;
 var mongoose = require('mongoose');
 var mockgoose = require("mockgoose-mongoose4");
 
-require('../main/server/model/db');
 mockgoose(mongoose);
-require('../main/server/model/users');
+mongoose.connect('mongodb://username:password@ds015335.mlab.com:15335/userbase');
+require('../main/server/model/db');
 
 var User = mongoose.model('User');
 
-before(function(done) {
+beforeEach(function(done) {
     mockgoose.reset();
     user = new User({email:'secret', username:'errr', name:'ee'});
     user.save(function(err, user){
@@ -21,7 +21,6 @@ describe('Blah', function() {
     describe('Bleh', function () {
         it('should not fail', function (done) {
             User.findOne({email : 'secret'}, function (err, e) {
-                console.log(e);
                 if(!e){
                     assert(false);
                 }
