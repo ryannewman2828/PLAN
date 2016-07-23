@@ -1,11 +1,11 @@
-var Mongoose = require('mongoose').Mongoose;
-var mongoose = new Mongoose();
-var mockgoose = require('mockgoose');
+var mongoose = require('mongoose');
+var mockgoose = require("mockgoose-mongoose4")
 mockgoose(mongoose);
 require('../main/server/model/db');
 
 
 var User = require('../main/server/model/users');
+
 
 var assert = require('chai').assert;
 describe('wser', function() {
