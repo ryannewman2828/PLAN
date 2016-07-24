@@ -16,6 +16,10 @@
                 templateUrl: '/authentication/login/login.view.html',
                 controller: 'loginCtrl',
             })
+            .when('/profile/:id', {
+                templateUrl: '/profile/profile/profile.view.html',
+                controller: 'profileCtrl',
+            })
             .when('/profile', {
                 templateUrl: '/profile/profile/profile.view.html',
                 controller: 'profileCtrl',

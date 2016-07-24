@@ -18,3 +18,16 @@ module.exports.profileRead = function(req, res) {
     }
 
 };
+
+module.exports.viewProfile = function (req, res) {
+    User
+        .findOne({username : req.params.id})
+        .exec(function(err, user){
+            if(err){
+                res.status(400).json(err);
+            }
+            else {
+                res.status(200).json(user);
+            }
+        });
+}

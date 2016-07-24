@@ -7,7 +7,7 @@
     sidebarCtrl.$inject = ['$scope','$window','meanData','authentication'];
     function sidebarCtrl($scope, $window, meanData, authentication) {
 
-        $scope.user = {};
+        $scope.userSidebar = {};
 
         $scope.isLoggedIn = authentication.isLoggedIn();
 
@@ -20,7 +20,7 @@
         if(authentication.isLoggedIn()) {
             meanData.getProfile()
                 .success(function (data) {
-                    $scope.user = data;
+                    $scope.userSidebar = data;
                 })
                 .error(function (e) {
                     console.log(e);

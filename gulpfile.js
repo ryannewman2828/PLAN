@@ -3,7 +3,6 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
-var mocha = require('gulp-mocha');
 
 gulp.task('scripts', function () {
     gulp.src(['./main/client/**/*.js', '!./main/client/app.min.js'])

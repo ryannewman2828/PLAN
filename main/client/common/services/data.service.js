@@ -15,8 +15,14 @@
             });
         };
 
+        var getProfileById = function(id){
+            var url = '/api/profile/' + id;
+            return $http.get(url);
+        }
+
         return {
-            getProfile : getProfile
+            getProfile : getProfile,
+            getProfileById : getProfileById
         };
     }
 

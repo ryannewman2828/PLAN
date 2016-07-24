@@ -13,6 +13,9 @@ var ctrlMsg = require('../controllers/messages');
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
 
+//profile
+router.get('/profile/:id', ctrlProfile.viewProfile);
+
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
