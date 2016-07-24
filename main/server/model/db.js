@@ -13,7 +13,6 @@ mongoose.connection.on('error', function(err) {
 mongoose.connection.on('disconnected', function() {
     console.log('Mongoose disconnected');
 });
-mongoose.connection.on
 
 // If the Node process ends, close the Mongoose connection
 process.on('SIGINT', function() {
