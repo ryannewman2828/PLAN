@@ -11,7 +11,6 @@
         $scope.errorMsg = [];
 
         $scope.credentials = {
-            name : "",
             username: "",
             email : "",
             password : "",

@@ -17,7 +17,7 @@
             $window.location.href = '/';
         }
         
-        if(authentication.isLoggedIn()) {
+        if($scope.isLoggedIn) {
             meanData.getProfile()
                 .success(function (data) {
                     $scope.userSidebar = data;

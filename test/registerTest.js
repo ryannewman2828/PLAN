@@ -25,7 +25,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Ryan Newman",
                     username: "secret",
                     email : "fake@gmail.com",
                     password : "password",
@@ -38,32 +37,11 @@ describe('Registration', function() {
         });
     });
     describe('Register with blank fields', function () {
-        it('Register with an empty name should return a 400', function () {
-            mockgoose.reset();
-            chai.request(app)
-                .post('/api/register')
-                .send({
-                    name : "",
-                    username: "secret",
-                    email : "fake@gmail.com",
-                    password : "password",
-                    confirmPass : "password"
-                })
-                .end(function (err, res) {
-                    chai.expect(res).to.have.status(400);
-                    res.should.be.json;
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('errorMessage');
-                    res.body.errorMessage.should.be.a('array');
-                    chai.expect(res.body.errorMessage).to.eql(['One or more fields have been left blank' ]);
-                });
-        });
         it('Register with an empty username should return a 400', function () {
             mockgoose.reset();
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Ryan Newman",
                     username: "",
                     email : "fake@gmail.com",
                     password : "password",
@@ -83,7 +61,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Ryan Newman",
                     username: "secret",
                     email : "",
                     password : "password",
@@ -103,7 +80,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Ryan Newman",
                     username: "secret",
                     email : "fake@gmail.com",
                     password : "",
@@ -123,7 +99,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Ryan Newman",
                     username: "secret",
                     email : "fake@gmail.com",
                     password : "password",
@@ -143,7 +118,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "",
                     username: "",
                     email : "",
                     password : "",
@@ -165,7 +139,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Ryan Newman",
                     username: "secret",
                     email : "fake@gmail.com",
                     password : "beep",
@@ -184,7 +157,7 @@ describe('Registration', function() {
     describe('Register with already existing conflicting users', function () {
         before(function() {
             mockgoose.reset();
-            user = new User({username:'secret', email:'fake@gmail.com', name:'Not Ryan Newman'});
+            user = new User({username:'secret', email:'fake@gmail.com'});
             user.save(function(err, user){
                 if (err) return console.error(err);
             });
@@ -193,7 +166,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Not Ryan Newman",
                     username: "secret",
                     email : "fake2@gmail.com",
                     password : "password",
@@ -212,7 +184,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Not Ryan Newman",
                     username: "secret2",
                     email : "fake@gmail.com",
                     password : "password",
@@ -231,7 +202,6 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "Not Ryan Newman",
                     username: "secret",
                     email : "fake@gmail.com",
                     password : "password",
@@ -250,11 +220,10 @@ describe('Registration', function() {
             chai.request(app)
                 .post('/api/register')
                 .send({
-                    name : "",
                     username: "secret",
                     email : "fake@gmail.com",
                     password : "password",
-                    confirmPass : "password2"
+                    confirmPass : ""
                 })
                 .end(function (err, res) {
                     chai.expect(res).to.have.status(400);
@@ -269,7 +238,7 @@ describe('Registration', function() {
     /*
     describe('Qurery a user', function () {
         before(function() {
-            user = new User({email:'secret', username:'errr', name:'ee'});
+            user = new User({email:'secret', username:'errr'});
             user.save(function(err, user){
                 if (err) return console.error(err);
             });

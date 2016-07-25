@@ -10,8 +10,7 @@ module.exports.register = function(req, res) {
     var errorMessage = [];
 
     // empty fields
-    if(req.body.name === "" ||
-    req.body.username === "" ||
+    if(req.body.username === "" ||
     req.body.email === "" ||
     req.body.password === "" ||
     req.body.confirmPass === ""){
@@ -48,10 +47,8 @@ module.exports.register = function(req, res) {
 
     var onFinish = function(){
         if(!error) {
-            user.name = req.body.name;
             user.username = req.body.username;
             user.email = req.body.email;
-            user.credits = 0;
 
             user.setPassword(req.body.password);
 

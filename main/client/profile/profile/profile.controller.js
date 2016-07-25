@@ -22,7 +22,6 @@
             meanData.getProfile()
                 .success(function (data) {
                     $scope.user = data;
-                    console.log($scope.user);
                 })
                 .error(function (e) {
                     console.log(e);

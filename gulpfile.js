@@ -17,11 +17,6 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./main/public/stylesheets'));
 });
 
-gulp.task('test', function(){
-    return gulp.src('./test/exampletest.js', {read: false})
-        .pipe(mocha());
-});
-
 gulp.task('watch', function () {
     gulp.watch(['./main/client/**/*.js', '!./main/client/app.min.js'], ['scripts']);
     gulp.watch('./main/public/sass_stylesheets/*.scss', ['sass']);
