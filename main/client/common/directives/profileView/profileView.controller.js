@@ -2,10 +2,10 @@
 
     angular
         .module('meanApp')
-        .controller('sidebarCtrl', sidebarCtrl);
+        .controller('profileViewCtrl', profileViewCtrl);
 
-    sidebarCtrl.$inject = ['$scope','$window','meanData','authentication'];
-    function sidebarCtrl($scope, $window, meanData, authentication) {
+    profileViewCtrl.$inject = ['$scope','$window','meanData','authentication'];
+    function profileViewCtrl($scope, $window, meanData, authentication) {
 
         $scope.userSidebar = {};
 
