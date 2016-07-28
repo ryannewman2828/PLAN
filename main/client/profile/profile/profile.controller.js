@@ -14,6 +14,10 @@
             meanData.getProfileById(id)
                 .success(function (data) {
                     $scope.user = data;
+                    meanData.getProfile().success(function (innerData) {
+                            console.log(innerData.username);
+                            $scope.myProfile = innerData.username === data.username;
+                        })
                 })
                 .error(function (e) {
                     console.log(e);
@@ -22,6 +26,7 @@
             meanData.getProfile()
                 .success(function (data) {
                     $scope.user = data;
+                    $scope.myProfile = true;
                 })
                 .error(function (e) {
                     console.log(e);

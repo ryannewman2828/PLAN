@@ -7,18 +7,21 @@
 
         <div class="col-md-4 profile">
 
-            <h1 class="form-signin-heading">Your profile</h1>
+            <h1>{{ user.username }}'s profile</h1>
 
-            <form  class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Username</label>
-                    <p class="form-control-static">{{ user.username }}</p>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Email</label>
-                    <p class="form-control-static">{{ user.email }}</p>
-                </div>
-            </form>
+            <ul class="list-inline" ng-hide="myProfile">
+                <li>
+                    <a href="#" class="btn btn-default btn-lg"><span>Message</span></a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default btn-lg"><span>Add Friend</span></a>
+                </li>
+            </ul>
+            <ul class="list-inline" ng-show="myProfile">
+                <li>
+                    <a href="#" class="btn btn-default btn-lg"><span>Settings</span></a>
+                </li>
+            </ul>
 
         </div>
 
