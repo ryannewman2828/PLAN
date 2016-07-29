@@ -24,4 +24,3 @@ process.on('SIGINT', function() {
 
 // Initializes all schemas and models
 require('./users');
-require('./message');

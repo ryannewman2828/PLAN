@@ -16,6 +16,20 @@ var userSchema = new mongoose.Schema({
 		required: true
 	},
 	friends: [String],
+	pendingFriends: [String],
+	messages: [{
+		sender: {
+			type: String,
+			required: true
+		},
+		dateSent: {
+			type: Date,
+			required: true
+		},
+		message: {
+			type: String,
+			required: true
+		}}],
 	hash: String,
 	salt: String
 });

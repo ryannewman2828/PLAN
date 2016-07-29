@@ -15,7 +15,6 @@
                 .success(function (data) {
                     $scope.user = data;
                     meanData.getProfile().success(function (innerData) {
-                            console.log(innerData.username);
                             $scope.myProfile = innerData.username === data.username;
                         })
                 })

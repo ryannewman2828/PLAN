@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Message = mongoose.model('Message');
+var User = mongoose.model('User');
 
 module.exports.sendMessage = function (req, res) {
 
