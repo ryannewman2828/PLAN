@@ -22,6 +22,9 @@
 .navbar-nav li a {
   line-height: 42px; }
 
+.profile-modal textarea {
+  resize: none; }
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
