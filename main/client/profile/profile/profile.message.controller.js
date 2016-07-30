@@ -7,8 +7,16 @@
     ModalInstanceCtrl.$inject = ['$scope', '$uibModalInstance'];
     function ModalInstanceCtrl($scope, $uibModalInstance) {
 
+        $scope.message;
+
         $scope.ok = function () {
-            $uibModalInstance.close();
+            if($scope.message) {
+                console.log($scope.message);
+                $uibModalInstance.close($scope.message);
+            }
+            else {
+                $uibModalInstance.dismiss('cancel');
+            }
         };
 
         $scope.cancel = function () {
