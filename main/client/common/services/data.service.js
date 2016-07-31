@@ -30,11 +30,17 @@
             }
             return $http.post(url, request);
         };
+        
+        var addFriend = function (sender, receiver) {
+            var url = 'api/friend/' + receiver;
+            return $http.post(url, {sender : sender});
+        }
 
         return {
             getProfile : getProfile,
             getProfileById : getProfileById,
-            sendMessage : sendMessage
+            sendMessage : sendMessage,
+            addFriend : addFriend
         };
     }
 

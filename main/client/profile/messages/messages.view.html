@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<navigation></navigation>
 
-</body>
-</html>
+<div class="container">
+    <div class="row">
+
+        <profileview></profileview>
+
+        <div class="col-md-4 message">
+            <h2>Messages</h2>
+            <ul>
+                <li ng-repeat="message in messages">
+                    {{message.message}}
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

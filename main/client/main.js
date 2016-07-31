@@ -16,6 +16,10 @@
                 templateUrl: '/authentication/login/login.view.html',
                 controller: 'loginCtrl',
             })
+            .when('/message', {
+                templateUrl: '/profile/messages/messages.view.html',
+                controller: 'messageCtrl',
+            })
             .when('/profile/:id', {
                 templateUrl: '/profile/profile/profile.view.html',
                 controller: 'profileCtrl',
@@ -30,6 +34,7 @@
         $locationProvider.html5Mode(true);
     }
 
+    //TODO: update this to handle other things non logged in people shouldn't see
     function run($rootScope, $location, authentication) {
         $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
             if ($location.path() === '/profile' && !authentication.isLoggedIn()) {

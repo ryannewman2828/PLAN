@@ -52,6 +52,18 @@
                     });
             });
         };
+        
+        $scope.addFriend = function () {
+            meanData.addFriend($scope.myUsername, $scope.user.username)
+                .error(function (err) {
+                    console.log(err);
+                    alert(err.error);
+                })
+                .then(function () {
+                    alert('Friend request sent');
+                    console.log('Friend Request sent');
+                });
+        }
     }
 
 })();
