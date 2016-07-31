@@ -24,5 +24,17 @@
             </ul>
         </div>
 
+        <div class="btn-group btn-group-justified">
+            <p ng-click="displayFriends=true" class="btn btn-primary">Friends</p>
+            <p ng-click="displayFriends=false" class="btn btn-primary">Collection</p>
+        </div>
+        <div ng-show="displayFriends">
+            <p>Friends are here</p>
+        </div>
+
+        <div ng-hide="displayFriends">
+            <p>Collections are here</p>
+        </div>
+
     </div>
 </div>

@@ -11,7 +11,6 @@
 
         $scope.ok = function () {
             if($scope.message) {
-                console.log($scope.message);
                 $uibModalInstance.close($scope.message);
             }
             else {
