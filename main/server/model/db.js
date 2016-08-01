@@ -1,5 +1,11 @@
 var mongoose = require('mongoose');
-var dbURI = 'mongodb://username:password@ds015335.mlab.com:15335/userbase';
+var dbURI;
+
+if(process.env.mode === 'PRODUCTION') {
+    dbURI = 'mongodb://username:password@ds015335.mlab.com:15335/userbase';
+} else if (process.env.mode === 'TESTING'){
+    dbURI = 'mongodb://username:password@ds139655.mlab.com:39655/test-user-base';
+}
 
 mongoose.connect(dbURI);
 

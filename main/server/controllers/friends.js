@@ -26,6 +26,7 @@ module.exports.addFriend = function (req, res) {
         });
 };
 
+// Removes tbe friend/sender from both peoples pending lists and adds them to the friends list
 module.exports.acceptFriend = function (req, res) {
     var sender = req.body.sender;
     User
@@ -43,14 +44,35 @@ module.exports.acceptFriend = function (req, res) {
                         res.status(409).json({error : 'Friend already exists'});
                     } else {
                         user.friends.push(sender);
-                        user.save();
-                        res.status(200).json({message : 'request went through'})
+                        User
+                            .findOne({username : sender})
+                            .exec(function(err, user2){
+                                if(err){
+                                    res.status(400).json(err);
+                                }
+                                else {
+                                    if(user2.pendingFriends.some(function (friend) { return friend === req.params.id; })){
+                                        user2.pendingFriends.splice(user2.pendingFriends.indexOf(req.params.id), user2.pendingFriends.indexOf(req.params.id) + 1);
+                                    } else {
+                                        if(user2.friends.some(function (friend) { return friend === req.params.id; })){
+                                            res.status(409).json({error : 'Friend already exists'});
+                                        } else {
+                                            user2.friends.push(req.params.id);
+                                            user.save();
+                                            user2.save();
+                                            res.status(200).json({message : 'request went through'});
+                                        }
+                                    }
+                                }
+                            });
                     }
                 }
             }
         });
+
 };
 
+//removes from the users pending list
 module.exports.rejectFriend = function (req, res) {
     var sender = req.body.sender;
     User
@@ -71,6 +93,7 @@ module.exports.rejectFriend = function (req, res) {
         });
 };
 
+// Removes from both peoples friends list
 module.exports.deleteFriend = function (req, res) {
     var sender = req.body.sender;
     User
@@ -84,9 +107,26 @@ module.exports.deleteFriend = function (req, res) {
                     res.status(404).json({error : 'No such user exists'});
                 } else {
                     user.friends.splice(user.friends.indexOf(sender), user.friends.indexOf(sender) + 1);
-                    user.save();
-                    res.status(200).json({message : 'request went through'});
+                    User
+                        .findOne({username : sender})
+                        .exec(function(err, user2){
+                            if(err){
+                                res.status(400).json(err);
+                            }
+                            else {
+                                if(!user2.friends.some(function (friend) { return friend === req.params.id; })){
+                                    res.status(404).json({error : 'No such user exists'});
+                                } else {
+                                    user2.friends.splice(user2.friends.indexOf(req.params.id), user2.friends.indexOf(req.params.id) + 1);
+                                    user.save();
+                                    user2.save();
+                                    res.status(200).json({message : 'request went through'});
+                                }
+                            }
+                        });
                 }
             }
+
         });
+
 };

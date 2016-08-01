@@ -5,7 +5,7 @@
 
         <profileview></profileview>
 
-        <div class="col-md-4 profile">
+        <div class="col-md-4" id="profile">
 
             <h1>{{ user.username }}'s profile</h1>
 
@@ -32,7 +32,7 @@
             <ul ng-show="myProfile && user.pendingFriends.length !== 0">
                 <h2>Pending Friends</h2>
                 <li ng-repeat="friend in user.pendingFriends">
-                    <p>{{friend}}</p>
+                    <a href="profile/{{friend}}">{{friend}}</a>
                     <button ng-click="acceptFriend(friend)">Accept Friend</button>
                     <button ng-click="rejectFriend(friend)">Reject Friend</button>
                 </li>
@@ -40,7 +40,7 @@
             <ul>
                 <h2>Friends</h2>
                 <li ng-repeat="friend in user.friends">
-                    <p>{{friend}}</p>
+                    <a href="profile/{{friend}}">{{friend}}</a>
                     <button ng-show="myProfile" ng-click="deleteFriend(friend)">Delete Friend</button>
                 </li>
             </ul>

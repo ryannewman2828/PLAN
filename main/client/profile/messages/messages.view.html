@@ -7,12 +7,13 @@
 
         <div class="col-md-4 message">
             <h2>Messages</h2>
+            <h4 ng-show="messages.length===0">No Messages to Display</h4>
             <ul>
                 <li ng-repeat="message in messages">
                     {{message.message}}
                 </li>
             </ul>
-
         </div>
+
     </div>
 </div>

@@ -16,7 +16,7 @@
             authentication
                 .login($scope.credentials)
                 .error(function(err){
-                    alert(err);
+                    alert(err.message);
                 })
                 .then(function(){
                     $location.path('/');

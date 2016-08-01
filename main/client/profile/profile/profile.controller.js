@@ -56,7 +56,7 @@
         $scope.addFriend = function () {
             meanData.addFriend($scope.myUsername, $scope.user.username)
                 .error(function (err) {
-                    console.log(err);
+                    console.log(err.error);
                     alert(err.error);
                 })
                 .then(function () {

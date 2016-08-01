@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
+if(process.env.mode !== 'TESTING') {
+  process.env.mode = "PRODUCTION";
+}
+
 var db = require('./server/model/db');
 var userPassport = require('./server/config/passport');
 
