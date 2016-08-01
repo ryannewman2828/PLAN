@@ -4,8 +4,8 @@
         .module('meanApp')
         .controller('profileCtrl', profileCtrl);
 
-    profileCtrl.$inject = ['$scope', '$routeParams', '$uibModal', 'meanData'];
-    function profileCtrl($scope, $routeParams, $uibModal, meanData) {
+    profileCtrl.$inject = ['$scope', '$routeParams','$route', '$uibModal', 'meanData'];
+    function profileCtrl($scope, $routeParams, $route, $uibModal, meanData) {
 
         var id = $routeParams.id;
         $scope.user = {};
@@ -62,6 +62,39 @@
                 .then(function () {
                     alert('Friend request sent');
                     console.log('Friend Request sent');
+                });
+        };
+        
+        $scope.acceptFriend = function (friend) {
+            meanData.acceptFriend(friend, $scope.user.username)
+                .error(function (err) {
+                    console.log(err);
+                })
+                .then(function () {
+                    console.log('Friend request successfully accepted');
+                    $route.reload();
+                });
+        };
+        
+        $scope.rejectFriend = function (friend) {
+            meanData.rejectFriend(friend, $scope.user.username)
+                .error(function (err) {
+                    console.log(err);
+                })
+                .then(function () {
+                    console.log('Friend request successfully rejected');
+                    $route.reload();
+                });
+        };
+        
+        $scope.deleteFriend = function (friend) {
+            meanData.deleteFriend(friend, $scope.user.username)
+                .error(function (err) {
+                    console.log(err);
+                })
+                .then(function () {
+                    console.log('Friend successfully removed from list');
+                    $route.reload();
                 });
         }
     }

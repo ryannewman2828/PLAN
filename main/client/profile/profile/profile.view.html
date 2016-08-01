@@ -29,7 +29,21 @@
             <p ng-click="displayFriends=false" class="btn btn-primary">Collection</p>
         </div>
         <div ng-show="displayFriends">
-            <p>Friends are here</p>
+            <ul ng-show="myProfile && user.pendingFriends.length !== 0">
+                <h2>Pending Friends</h2>
+                <li ng-repeat="friend in user.pendingFriends">
+                    <p>{{friend}}</p>
+                    <button ng-click="acceptFriend(friend)">Accept Friend</button>
+                    <button ng-click="rejectFriend(friend)">Reject Friend</button>
+                </li>
+            </ul>
+            <ul>
+                <h2>Friends</h2>
+                <li ng-repeat="friend in user.friends">
+                    <p>{{friend}}</p>
+                    <button ng-show="myProfile" ng-click="deleteFriend(friend)">Delete Friend</button>
+                </li>
+            </ul>
         </div>
 
         <div ng-hide="displayFriends">

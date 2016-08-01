@@ -34,13 +34,31 @@
         var addFriend = function (sender, receiver) {
             var url = 'api/friend/' + receiver;
             return $http.post(url, {sender : sender});
-        }
+        };
+        
+        var acceptFriend = function (sender, receiver) {
+            var url = 'api/accept-friend/' + receiver;
+            return $http.post(url, {sender : sender});
+        };
+
+        var rejectFriend = function (sender, receiver) {
+            var url = 'api/reject-friend/' + receiver;
+            return $http.post(url, {sender : sender});
+        };
+
+        var deleteFriend = function (sender, receiver) {
+            var url = 'api/delete-friend/' + receiver;
+            return $http.post(url, {sender : sender});
+        };
 
         return {
             getProfile : getProfile,
             getProfileById : getProfileById,
             sendMessage : sendMessage,
-            addFriend : addFriend
+            addFriend : addFriend,
+            acceptFriend : acceptFriend,
+            rejectFriend : rejectFriend,
+            deleteFriend : deleteFriend
         };
     }
 
