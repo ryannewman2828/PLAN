@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./main/bin/www",
-    "test": "mocha"
+    "test": "webdriver-manager start && protractor conf.js"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
