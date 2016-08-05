@@ -57,7 +57,6 @@ describe('Friend', function() {
                 element(by.css('[ng-click="logOut()"]')).click();
                 browser.waitForAngular();
                 browser.get('/login');
-
             })
             .then(function () {
                 element(by.model('credentials.email')).clear();
@@ -101,6 +100,57 @@ describe('Friend', function() {
                 element(by.css("button.btn.btn-default")).click();
                 browser.waitForAngular();
                 element.all(by.repeater('friend in user.friends')).then(function(items) {
+                    expect(items.length).toBe(0);
+                });
+            });
+    });
+    it('should allow both people to delete the other ', function () {
+        var browser2 = browser.forkNewDriverInstance();
+        browser.get('/login')
+            .then(function () {
+                element(by.model('credentials.email')).clear();
+                element(by.model('credentials.email')).sendKeys('fake@gmail.com');
+                element(by.model('credentials.password')).clear();
+                element(by.model('credentials.password')).sendKeys('fake');
+                element(by.css("button.btn.btn-default")).click();
+                browser.waitForAngular();
+                browser.get('/profile/secret2');
+            })
+            .then(function () {
+                element(by.css('[ng-click="addFriend()"]')).click();
+                browser.wait(function() {
+                    return browser.switchTo().alert().then(
+                        function() { return true; },
+                        function() { return false; }
+                    );
+                });
+                browser.switchTo().alert().accept();
+                browser.get('/profile');
+            })
+            .then(function () {
+                browser2.get('login');
+                browser2.element(by.model('credentials.email')).clear();
+                browser2.element(by.model('credentials.email')).sendKeys('fake2@gmail.com');
+                browser2.element(by.model('credentials.password')).clear();
+                browser2.element(by.model('credentials.password')).sendKeys('fake');
+                browser2.element(by.css("button.btn.btn-default")).click();
+                browser2.waitForAngular();
+                browser2.get('/profile');
+                browser2.element.all(by.repeater('friend in user.pendingFriends')).get(0).element(by.css('[ng-click="acceptFriend(friend)"]')).click();
+                browser2.waitForAngular();
+                browser.get('/profile');
+                return [element.all(by.repeater('friend in user.friends')).get(0).element(by.xpath('/html/body/div/div/div[3]/ul[2]/li/a')).getText(),
+                        browser2.element.all(by.repeater('friend in user.friends')).get(0).element(by.xpath('/html/body/div/div/div[3]/ul[2]/li/a')).getText()];
+            })
+            .then(function (friends) {
+                expect(friends[0]).toEqual('secret2');
+                expect(friends[1]).toEqual('secret');
+                element.all(by.repeater('friend in user.friends')).get(0).element(by.css('[ng-click="deleteFriend(friend)"]')).click();
+                browser2.element.all(by.repeater('friend in user.friends')).get(0).element(by.css('[ng-click="deleteFriend(friend)"]')).click();
+                element.all(by.repeater('friend in user.friends')).then(function(items) {
+                    expect(items.length).toBe(0);
+                });
+                browser2.element.all(by.repeater('friend in user.friends')).then(function(items) {
                     expect(items.length).toBe(0);
                 });
             });

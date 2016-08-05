@@ -103,30 +103,25 @@ module.exports.deleteFriend = function (req, res) {
                 res.status(400).json(err);
             }
             else {
-                if(!user.friends.some(function (friend) { return friend === sender; })){
-                    res.status(404).json({error : 'No such user exists'});
-                } else {
+                if (user.friends.some(function (friend) {return friend === sender;})) {
                     user.friends.splice(user.friends.indexOf(sender), user.friends.indexOf(sender) + 1);
-                    User
-                        .findOne({username : sender})
-                        .exec(function(err, user2){
-                            if(err){
-                                res.status(400).json(err);
-                            }
-                            else {
-                                if(!user2.friends.some(function (friend) { return friend === req.params.id; })){
-                                    res.status(404).json({error : 'No such user exists'});
-                                } else {
-                                    user2.friends.splice(user2.friends.indexOf(req.params.id), user2.friends.indexOf(req.params.id) + 1);
-                                    user.save();
-                                    user2.save();
-                                    res.status(200).json({message : 'request went through'});
-                                }
-                            }
-                        });
                 }
+                user.save();
             }
-
-        });
-
+        }).then(function () {
+            User
+                .findOne({username : sender})
+                .exec(function(err, user2){
+                    if(err){
+                        res.status(400).json(err);
+                    }
+                    else {
+                        if(user2.friends.some(function (friend) { return friend === req.params.id; })){
+                            user2.friends.splice(user2.friends.indexOf(req.params.id), user2.friends.indexOf(req.params.id) + 1);
+                        }
+                        user2.save();
+                        res.status(200).json({message : 'request went through'});
+                    }
+                });
+    });
 };
