@@ -10,6 +10,8 @@ var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 var ctrlMsg = require('../controllers/messages');
 var ctrlFriend = require('../controllers/friends');
+var ctrlCharacters = require('../controllers/characters');
+var ctrlCollection = require('../controllers/collection');
 
 // authentication
 router.post('/register', ctrlAuth.register);
