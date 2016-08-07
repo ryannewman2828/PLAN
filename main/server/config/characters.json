@@ -2,47 +2,47 @@
   "characters" : [
     {
       "name" : "Brand",
-      "firstAttack" : "",
-      "firstAttackDesc" : "",
-      "secondAttack" : "",
-      "secondAttackDesc" : "",
-      "thirdAttack" : "",
-      "thirdAttackDesc" : "",
-      "fourthAttack" : "",
-      "fourthAttackDesc" : ""
+      "1Attack" : "Attack 1",
+      "1AttackDesc" : "This is an example attack for demonstration purposes",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
     },
     {
       "name" : "Kain",
-      "firstAttack" : "",
-      "firstAttackDesc" : "",
-      "secondAttack" : "",
-      "secondAttackDesc" : "",
-      "thirdAttack" : "",
-      "thirdAttackDesc" : "",
-      "fourthAttack" : "",
-      "fourthAttackDesc" : ""
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
     },
     {
       "name" : "Eris",
-      "firstAttack" : "",
-      "firstAttackDesc" : "",
-      "secondAttack" : "",
-      "secondAttackDesc" : "",
-      "thirdAttack" : "",
-      "thirdAttackDesc" : "",
-      "fourthAttack" : "",
-      "fourthAttackDesc" : ""
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
     },
     {
       "name" : "Discord",
-      "firstAttack" : "",
-      "firstAttackDesc" : "",
-      "secondAttack" : "",
-      "secondAttackDesc" : "",
-      "thirdAttack" : "",
-      "thirdAttackDesc" : "",
-      "fourthAttack" : "",
-      "fourthAttackDesc" : ""
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
     }
   ]
 }

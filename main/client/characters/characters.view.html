@@ -14,19 +14,25 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <img alt="Bootstrap Image Preview" src="/photos/profile-picture.jpg" />
+                                            <img src="/photos/characters/{{displayChar.name}}/profile.jpg" ng-click="changeAttack(0)" />
                                         </div>
                                         <div class="col-md-8">
                                             <ul class="list-inline">
-                                                <li><img alt="Bootstrap Image Preview" src="/photos/profile-picture.jpg" /></li>
-                                                <li><img alt="Bootstrap Image Preview" src="/photos/profile-picture.jpg" /></li>
-                                                <li><img alt="Bootstrap Image Preview" src="/photos/profile-picture.jpg" /></li>
-                                                <li><img alt="Bootstrap Image Preview" src="/photos/profile-picture.jpg" /></li>
+                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(1)" /></li>
+                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(2)" /></li>
+                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(3)" /></li>
+                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(4)" /></li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <p>
-                                        Attack description goes here
+                                    <p ng-show="attackIndex===0">
+                                        {{displayChar.name}}
+                                    </p>
+                                    <h3 ng-hide="attackIndex===0">
+                                        {{displayChar[attackIndex + "Attack"]}}
+                                    </h3>
+                                    <p ng-hide="attackIndex===0">
+                                        {{displayChar[attackIndex + "AttackDesc"]}}
                                     </p>
                                 </div>
                             </div>
@@ -34,33 +40,21 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div id="charactersList">
                 <div class="col-sm-12">
                     <div class="row">
-                        <div class="col-sm-3">
-                            <div class="col-sm-12 col-xs-6">
-                                <img href="#"><img src="/photos/profile-picture.jpg" class="img-responsive" alt="..." />
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-sm-12 col-xs-6">
-                                <img href="#"><img src="/photos/profile-picture.jpg" class="img-responsive" alt="..." />
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-sm-12 col-xs-6">
-                                <img href="#"><img src="/photos/profile-picture.jpg" class="img-responsive" alt="..." />
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-sm-12 col-xs-6">
-                                <img href="#"><img src="/photos/profile-picture.jpg" class="img-responsive" alt="..." />
-                            </div>
-                        </div>
+                        <ul>
+                            <li ng-repeat="i in indices">
+                                <ul class="list-inline a">
+                                    <li ng-repeat="j in [0, 1, 2, 3]" class="col-md-3">
+                                        <img src="/photos/characters/{{characters[i + j].name}}/profile.jpg" ng-click="changeDisplay(i + j)" class="img-responsive" alt="..." />
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

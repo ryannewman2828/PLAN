@@ -1,3 +1,6 @@
+#charactersList ul {
+  display: inline; }
+
 .home .slide-image {
   width: 100%; }
 
@@ -25,8 +28,38 @@
 .profile-modal textarea {
   resize: none; }
 
+#charactersList ul {
+  display: inline; }
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
+
+.home .slide-image {
+  width: 100%; }
+
+.home .carousel-holder {
+  margin-bottom: 30px; }
+
+.home .thumbnail {
+  padding: 0; }
+
+.home .thumbnail img {
+  width: 100%; }
+
+.home .caption {
+  height: 130px;
+  overflow: hidden; }
+
+.navbar-nav li a {
+  line-height: 42px; }
+
+.profile-modal textarea {
+  resize: none; }
+
+.sidebar .list-group {
+  text-align: center; }
+  .sidebar .list-group button {
+    text-align: center; }

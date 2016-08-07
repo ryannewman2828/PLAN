@@ -28,4 +28,7 @@ router.post('/accept-friend/:id', ctrlFriend.acceptFriend);
 router.post('/reject-friend/:id', ctrlFriend.rejectFriend);
 router.post('/delete-friend/:id', ctrlFriend.deleteFriend);
 
+// collection
+router.get('/characters', ctrlCharacters.getCharacters);
+
 module.exports = router;
