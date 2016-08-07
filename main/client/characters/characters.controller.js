@@ -1,3 +1,13 @@
-/**
- * Created by Ryan on 18/07/2016.
- */
+(function() {
+
+    angular
+        .module('meanApp')
+        .controller('charCtrl', charCtrl);
+
+    charCtrl.$inject = ['$scope', '$routeParams','$route', '$uibModal', 'meanData'];
+    function charCtrl($scope, $routeParams, $route, $uibModal, meanData) {
+
+
+    }
+
+})();

@@ -29,6 +29,7 @@
             <p ng-click="displayFriends=false" class="btn btn-primary">Collection</p>
         </div>
         <div ng-show="displayFriends">
+
             <ul ng-show="myProfile && user.pendingFriends.length !== 0">
                 <h2>Pending Friends</h2>
                 <li ng-repeat="friend in user.pendingFriends">
@@ -43,6 +44,7 @@
                     <a href="profile/{{friend}}">{{friend}}</a>
                     <button ng-show="myProfile" ng-click="deleteFriend(friend)">Delete Friend</button>
                 </li>
+                <h4 ng-show="user.pendingFriends.length === 0 && user.friends.length === 0">No Friends to Display</h4>
             </ul>
         </div>
 

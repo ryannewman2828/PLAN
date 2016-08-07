@@ -1,0 +1,48 @@
+{
+  "characters" : [
+    {
+      "name" : "Brand",
+      "firstAttack" : "",
+      "firstAttackDesc" : "",
+      "secondAttack" : "",
+      "secondAttackDesc" : "",
+      "thirdAttack" : "",
+      "thirdAttackDesc" : "",
+      "fourthAttack" : "",
+      "fourthAttackDesc" : ""
+    },
+    {
+      "name" : "Kain",
+      "firstAttack" : "",
+      "firstAttackDesc" : "",
+      "secondAttack" : "",
+      "secondAttackDesc" : "",
+      "thirdAttack" : "",
+      "thirdAttackDesc" : "",
+      "fourthAttack" : "",
+      "fourthAttackDesc" : ""
+    },
+    {
+      "name" : "Eris",
+      "firstAttack" : "",
+      "firstAttackDesc" : "",
+      "secondAttack" : "",
+      "secondAttackDesc" : "",
+      "thirdAttack" : "",
+      "thirdAttackDesc" : "",
+      "fourthAttack" : "",
+      "fourthAttackDesc" : ""
+    },
+    {
+      "name" : "Discord",
+      "firstAttack" : "",
+      "firstAttackDesc" : "",
+      "secondAttack" : "",
+      "secondAttackDesc" : "",
+      "thirdAttack" : "",
+      "thirdAttackDesc" : "",
+      "fourthAttack" : "",
+      "fourthAttackDesc" : ""
+    }
+  ]
+}

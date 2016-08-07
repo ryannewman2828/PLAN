@@ -20,6 +20,10 @@
                 templateUrl: '/profile/messages/messages.view.html',
                 controller: 'messageCtrl',
             })
+            .when('/characters', {
+                templateUrl: '/characters/characters.view.html',
+                controller: 'charCtrl',
+            })
             .when('/profile/:id', {
                 templateUrl: '/profile/profile/profile.view.html',
                 controller: 'profileCtrl',
