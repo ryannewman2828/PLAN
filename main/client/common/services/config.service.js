@@ -4,15 +4,21 @@
         .module('meanApp')
         .service('meanConfig', meanConfig);
 
-    meanConfig.$inject = ['$http', 'authentication'];
-    function meanConfig ($http, authentication) {
+    meanConfig.$inject = ['$http'];
+    function meanConfig ($http) {
 
         var getCharacters = function () {
             return $http.get('/api/characters')
         };
 
+        var getCollection = function (id) {
+            var url = '/api/collection/' + id;
+            return $http.get(url);
+        }
+
         return {
-            getCharacters : getCharacters
+            getCharacters : getCharacters,
+            getCollection : getCollection
         };
     }
 

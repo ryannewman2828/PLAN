@@ -30,5 +30,6 @@ router.post('/delete-friend/:id', ctrlFriend.deleteFriend);
 
 // collection
 router.get('/characters', ctrlCharacters.getCharacters);
+router.get('/collection/:id', ctrlCollection.getCollection);
 
 module.exports = router;

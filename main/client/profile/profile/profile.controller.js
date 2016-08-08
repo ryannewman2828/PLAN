@@ -4,25 +4,48 @@
         .module('meanApp')
         .controller('profileCtrl', profileCtrl);
 
-    profileCtrl.$inject = ['$scope', '$routeParams','$route', '$uibModal', 'meanData'];
-    function profileCtrl($scope, $routeParams, $route, $uibModal, meanData) {
+    profileCtrl.$inject = ['$scope', '$routeParams','$route', '$uibModal', 'meanData', 'meanConfig'];
+    function profileCtrl($scope, $routeParams, $route, $uibModal, meanData, meanConfig) {
 
         var id = $routeParams.id;
         $scope.user = {};
         $scope.displayFriends = true;
+        $scope.indices = [];
 
         if(id){
             meanData.getProfileById(id)
                 .success(function (data) {
                     $scope.user = data;
-                    meanData.getProfile().success(function (innerData) {
-                        $scope.myUsername = innerData.username;
-                        $scope.myProfile = innerData.username === data.username;
-                    })
+
                 })
-                .error(function (e) {
-                    console.log(e);
+                .error(function (err) {
+                    console.log(err);
+                })
+                .then(function () {
+                    meanData.getProfile()
+                        .success(function (innerData) {
+                            $scope.myUsername = innerData.username;
+                            $scope.myProfile = innerData.username === data.username;
+                        })
+                        .error(function (err) {
+                            console.log(err)
+                        })
+                })
+                .then(function () {
+                   meanConfig.getCollection($scope.user.username)
+                        .success(function (data) {
+                            $scope.collection = data.collection;
+                        })
+                       .error(function (err) {
+                           console.log(err);
+                       })
+                       .then(function () {
+                           for(var i = 0; i < $scope.collection.length; i += 4){
+                               $scope.indices.push(i);
+                           }
+                       });
                 });
+
         } else {
             meanData.getProfile()
                 .success(function (data) {
@@ -31,9 +54,26 @@
                 })
                 .error(function (e) {
                     console.log(e);
+                })
+                .then(function () {
+                    meanConfig.getCollection($scope.user.username)
+                        .success(function (data) {
+                            $scope.collection = data.collection;
+                            console.log(data.collection);
+                            console.log($scope.user.characters)
+                        })
+                        .error(function (err) {
+                            console.log(err);
+                        })
+                        .then(function () {
+                            for(var i = 0; i < $scope.collection.length; i += 4){
+                                $scope.indices.push(i);
+                            }
+                        });
                 });
-        }
 
+        }
+        
         $scope.open = function (size) {
             var modalInstance = $uibModal.open({
                 animation: true,

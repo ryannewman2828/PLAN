@@ -49,6 +49,8 @@ module.exports.register = function(req, res) {
         if(!error) {
             user.username = req.body.username;
             user.email = req.body.email;
+            user.characters = "";
+            user.missions = "";
 
             user.setPassword(req.body.password);
 
