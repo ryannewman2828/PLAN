@@ -1,6 +1,3 @@
-#charactersList ul {
-  display: inline; }
-
 .home .slide-image {
   width: 100%; }
 
@@ -27,9 +24,6 @@
 
 .profile-modal textarea {
   resize: none; }
-
-#charactersList ul {
-  display: inline; }
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }

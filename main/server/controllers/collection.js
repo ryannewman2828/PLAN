@@ -3,7 +3,7 @@ var User = mongoose.model('User');
 var fs = require('fs');
 
 module.exports.getCollection = function (req, res) {
-    var characters = JSON.parse(fs.readFileSync('../server/config/characters.json', 'utf8')).characters;
+    var characters = JSON.parse(fs.readFileSync('./main/server/config/characters.json', 'utf8')).characters;
     User
         .findOne({username : req.params.id})
         .exec(function(err, user){
@@ -17,14 +17,13 @@ module.exports.getCollection = function (req, res) {
                     var num = parseInt(collection.charAt(i), 16);
                     for(var j = 0; j < 4; j++){
                         if(num < 0){
-                            binaryCollection.push(0);
+                            binaryCollection.unshift(0);
                         } else {
-                            binaryCollection.push(Math.floor(num % 2));
+                            binaryCollection.unshift(Math.floor(num % 2));
                             num = Math.floor(num / 2);
                         }
                     }
                     binaryCollection.reverse();
-                    console.log(binaryCollection);
                 }
                 for(var i = characters.length - 1; i >= 0; i--){
                     if(!binaryCollection[i]){

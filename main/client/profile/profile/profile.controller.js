@@ -29,7 +29,7 @@
                         })
                         .error(function (err) {
                             console.log(err)
-                        })
+                        });
                 })
                 .then(function () {
                    meanConfig.getCollection($scope.user.username)
@@ -59,8 +59,6 @@
                     meanConfig.getCollection($scope.user.username)
                         .success(function (data) {
                             $scope.collection = data.collection;
-                            console.log(data.collection);
-                            console.log($scope.user.characters)
                         })
                         .error(function (err) {
                             console.log(err);

@@ -13,11 +13,13 @@ describe('Message', function() {
         var secret = new user();
         secret.username = 'secret';
         secret.email = 'fake@gmail.com';
+        secret.characters = '0';
         secret.setPassword('fake');
         secret.save(function (err) {});
         var secret2 = new user();
         secret2.username = 'secret2';
         secret2.email = 'fake2@gmail.com';
+        secret2.characters = '0';
         secret2.setPassword('fake');
         secret2.save(function (err) {});
         browser.get('/login')
