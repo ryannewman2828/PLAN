@@ -17,6 +17,7 @@ var userSchema = new mongoose.Schema({
 	},
 	characters: String,
 	missions: String,
+	profilePic: String,
 	friends: [String],
 	pendingFriends: [String],
 	messages: [{

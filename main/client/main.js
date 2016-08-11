@@ -32,6 +32,10 @@
                 templateUrl: '/profile/profile/profile.view.html',
                 controller: 'profileCtrl',
             })
+            .when('/settings', {
+                templateUrl: '/profile/settings/settings.view.html',
+                controller: 'settingsCtrl',
+            })
             .otherwise({redirectTo: '/'});
 
         // use the HTML5 History API

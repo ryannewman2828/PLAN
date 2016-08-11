@@ -51,6 +51,18 @@
             return $http.post(url, {sender : sender});
         };
 
+        var changePassword = function (passwords) {
+            return $http.post('to connect', passwords);
+        };
+
+        var changeEmail = function (user) {
+            return $http.post('to connect', user);
+        };
+
+        var changeProfilePic = function (user) {
+            return $http.post('to connect', user);
+        }
+
         return {
             getProfile : getProfile,
             getProfileById : getProfileById,
@@ -58,7 +70,10 @@
             addFriend : addFriend,
             acceptFriend : acceptFriend,
             rejectFriend : rejectFriend,
-            deleteFriend : deleteFriend
+            deleteFriend : deleteFriend,
+            changePassword : changePassword,
+            changeEmail : changeEmail,
+            changeProfilePic : changeProfilePic
         };
     }
 

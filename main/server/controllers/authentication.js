@@ -51,6 +51,7 @@ module.exports.register = function(req, res) {
             user.email = req.body.email;
             user.characters = "";
             user.missions = "";
+            user.profilePic = "Brand";
 
             user.setPassword(req.body.password);
 

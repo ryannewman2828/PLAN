@@ -14,7 +14,7 @@
         var getCollection = function (id) {
             var url = '/api/collection/' + id;
             return $http.get(url);
-        }
+        };
 
         return {
             getCharacters : getCharacters,

@@ -13,9 +13,9 @@
 
         $scope.logOut = function () {
             console.log('logout');
-            authentication.logout()
+            authentication.logout();
             $window.location.href = '/';
-        }
+        };
         
         if($scope.isLoggedIn) {
             meanData.getProfile()
