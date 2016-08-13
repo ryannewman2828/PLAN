@@ -4,8 +4,8 @@
         .module('meanApp')
         .controller('settingsCtrl', settingsCtrl);
 
-    settingsCtrl.$inject = ['$scope', 'meanData', 'meanConfig'];
-    function settingsCtrl($scope, meanData, meanConfig) {
+    settingsCtrl.$inject = ['$scope', '$location', 'meanData', 'meanConfig'];
+    function settingsCtrl($scope, $location, meanData, meanConfig) {
         var tempUser = {};
         $scope.indices = [];
         $scope.passwords = {};
@@ -35,33 +35,36 @@
 
         $scope.onSubmitPass = function () {
             meanData.changePassword({passwords : $scope.passwords, user : tempUser})
-                .success(function () {
-
+                .success(function (data) {
+                    console.log(data.message);
+                    $location.path('/');
                 })
-                .error(function () {
-
+                .error(function (err) {
+                    alert(err.message);
                 });
         };
 
         $scope.onSubmitEmail = function () {
             tempUser.email = $scope.email;
             meanData.changeEmail(tempUser)
-                .success(function () {
-                    
+                .success(function (data) {
+                    console.log(data.message);
+                    $location.path('/');
                 })
-                .error(function () {
-
+                .error(function (err) {
+                    alert(err.message);
                 });
         };
 
         $scope.onClickProfilePic = function (characterIndex) {
             tempUser.profilePic = $scope.collection[characterIndex].name;
             meanData.changeProfilePic(tempUser)
-                .success(function () {
-
+                .success(function (data) {
+                    console.log(data.message);
+                    $location.path('/');
                 })
-                .error(function () {
-
+                .error(function (err) {
+                    alert(err.message);
                 });
         };
     }

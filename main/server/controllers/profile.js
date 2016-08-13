@@ -34,7 +34,7 @@ module.exports.viewProfile = function (req, res) {
 
 module.exports.changePassword = function (req, res) {
     if(req.body.passwords.newPass !== req.body.passwords.confirmPass){
-        req.status(400).json({message : "Passwords don't match"});
+        res.status(400).json({message : "Passwords don't match"});
     } else {
         User
             .findOne({username : req.body.user.username}, function (err, user) {

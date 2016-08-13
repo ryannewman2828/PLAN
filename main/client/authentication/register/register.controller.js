@@ -22,7 +22,7 @@
             console.log('Registration failed due to incorrect field values');
             $scope.errorPresent = true;
             $scope.errorMsg = err.errorMessage;
-        }
+        };
         
         $scope.onSubmit = function () {
             console.log('Checking registration...');

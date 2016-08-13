@@ -11,7 +11,6 @@
         $scope.attackIndex = 0;
         meanConfig.getCharacters()
             .success(function (data) {
-                console.log(data);
                 $scope.characters = data.characters;
             })
             .error(function (e) {
@@ -27,11 +26,11 @@
         $scope.changeDisplay = function (index) {
             $scope.displayChar = $scope.characters[index];
             $scope.attackIndex = 0;
-        }
+        };
 
         $scope.changeAttack = function (index) {
             $scope.attackIndex = index;
-        }
+        };
     }
 
 })();
