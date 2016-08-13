@@ -34,7 +34,7 @@
             });
 
         $scope.onSubmitPass = function () {
-            meanData.changePassword(passwords)
+            meanData.changePassword({passwords : $scope.passwords, user : tempUser})
                 .success(function () {
 
                 })
@@ -55,7 +55,7 @@
         };
 
         $scope.onClickProfilePic = function (characterIndex) {
-            tempUser.profilePic = $scope.collection[characterIndex];
+            tempUser.profilePic = $scope.collection[characterIndex].name;
             meanData.changeProfilePic(tempUser)
                 .success(function () {
 
