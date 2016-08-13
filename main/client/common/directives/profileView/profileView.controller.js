@@ -8,6 +8,7 @@
     function profileViewCtrl($scope, $window, meanData, authentication) {
 
         $scope.userSidebar = {};
+        $scope.searchID = "";
 
         $scope.isLoggedIn = authentication.isLoggedIn();
 
@@ -26,6 +27,12 @@
                     console.log(e);
                 });
         }
+
+        $scope.search = function(keyCode){
+            if(keyCode === 13){
+                $window.location.href = 'profile/' + $scope.searchID;
+            }
+        };
     }
 
 })();
