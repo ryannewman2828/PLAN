@@ -21,6 +21,9 @@ router.post('/login', ctrlAuth.login);
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.get('/profile/:id', ctrlProfile.viewProfile);
 router.post('/message/:id', ctrlMsg.sendMessage);
+router.post('/settings/password', ctrlProfile.changePassword);
+router.post('/settings/email', ctrlProfile.changeEmail);
+router.post('/settings/profilePic', ctrlProfile.changeProfilePic);
 
 // friends
 router.post('/friend/:id', ctrlFriend.addFriend);

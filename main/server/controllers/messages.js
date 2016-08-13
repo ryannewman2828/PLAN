@@ -12,7 +12,7 @@ module.exports.sendMessage = function (req, res) {
             else {
                 user.messages.push(req.body);
                 if(user.messages.length > 10){
-                    user.messages.splice(0,1);
+                    user.messages.splice(0, 1);
                 }
                 user.save();
                 res.status(200).json({message : 'message went through'});

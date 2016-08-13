@@ -52,16 +52,16 @@
         };
 
         var changePassword = function (passwords) {
-            return $http.post('to connect', passwords);
+            return $http.post('api/settings/password', passwords);
         };
 
         var changeEmail = function (user) {
-            return $http.post('to connect', user);
+            return $http.post('api/settings/email', user);
         };
 
         var changeProfilePic = function (user) {
-            return $http.post('to connect', user);
-        }
+            return $http.post('api/settings/profilePic', user);
+        };
 
         return {
             getProfile : getProfile,
