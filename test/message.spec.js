@@ -33,7 +33,7 @@ describe('Message', function() {
                 browser.get('/profile/secret');
             })
             .then(function () {
-                element(by.xpath('//*[@id="profile"]/ul[1]/li[1]/button')).click()
+                element(by.xpath('//*[@id="profile"]/ul[1]/li[1]/button')).click();
                 element(by.name('messageBody')).sendKeys("Test Message");
                 element(by.css('[ng-click="ok()"]')).click();
                 element(by.css('[ng-click="logOut()"]')).click();
