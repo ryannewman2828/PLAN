@@ -45,7 +45,7 @@ describe('Search', function() {
                 expect(button1.isDisplayed()).toBeTruthy();
                 expect(button2.isDisplayed()).toBeTruthy();
                 expect(button3.isDisplayed()).toBeFalsy();
-            })
+            });
     });
     it('search for yourself should return your profile page', function() {
         browser.get('/login')
@@ -69,6 +69,6 @@ describe('Search', function() {
                 expect(button1.isDisplayed()).toBeFalsy();
                 expect(button2.isDisplayed()).toBeFalsy();
                 expect(button3.isDisplayed()).toBeTruthy();
-            })
+            });
     });
 });

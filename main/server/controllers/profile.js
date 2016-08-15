@@ -49,7 +49,7 @@ module.exports.changePassword = function (req, res) {
                         res.status(200).json({message : "Password was successfully changed"})
                     }
                 }
-            })
+            });
     }
 };
 
@@ -61,7 +61,7 @@ module.exports.changeEmail = function (req, res) {
                 res.status(400).json(err);
             } else {
                 if(user){
-                    res.status(400).json({message : "email has already been taken"});
+                    res.status(400).json({message : "Email has already been taken"});
                 } else {
                     User.update({ username : req.body.username }, { $set: { email: req.body.email }}, function () {
                         res.status(200).json({message : "Email was successfully changed"});
