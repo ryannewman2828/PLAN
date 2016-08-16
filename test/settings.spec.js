@@ -56,6 +56,12 @@ describe('Settings', function() {
         element(by.model('passwords.confirmPass')).clear();
         element(by.model('passwords.confirmPass')).sendKeys('new');
         element(by.xpath('/html/body/div/div/div[1]/form/button')).click();
+        browser.wait(function() {
+            return browser.switchTo().alert().then(
+                function() { return true; },
+                function() { return false; }
+            );
+        });
         var alertInst = browser.switchTo().alert();
         expect(alertInst.getText()).toBe("The password you entered is incorrect");
         alertInst.accept();
@@ -68,6 +74,12 @@ describe('Settings', function() {
         element(by.model('passwords.confirmPass')).clear();
         element(by.model('passwords.confirmPass')).sendKeys('new2');
         element(by.xpath('/html/body/div/div/div[1]/form/button')).click();
+        browser.wait(function() {
+            return browser.switchTo().alert().then(
+                function() { return true; },
+                function() { return false; }
+            );
+        });
         var alertInst = browser.switchTo().alert();
         expect(alertInst.getText()).toBe("Passwords don't match");
         alertInst.accept();
@@ -98,6 +110,12 @@ describe('Settings', function() {
         element(by.model('email')).clear();
         element(by.model('email')).sendKeys('new@gmail.com');
         element(by.xpath('/html/body/div/div/div[2]/form/button')).click();
+        browser.wait(function() {
+            return browser.switchTo().alert().then(
+                function() { return true; },
+                function() { return false; }
+            );
+        });
         var alertInst = browser.switchTo().alert();
         expect(alertInst.getText()).toBe("Email has already been taken");
         alertInst.accept();
@@ -106,6 +124,12 @@ describe('Settings', function() {
         element(by.model('email')).clear();
         element(by.model('email')).sendKeys('fake@gmail.com');
         element(by.xpath('/html/body/div/div/div[2]/form/button')).click();
+        browser.wait(function() {
+            return browser.switchTo().alert().then(
+                function() { return true; },
+                function() { return false; }
+            );
+        });
         var alertInst = browser.switchTo().alert();
         expect(alertInst.getText()).toBe("Email has already been taken");
         alertInst.accept();

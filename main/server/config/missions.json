@@ -1,0 +1,37 @@
+{
+  "missions" : [
+    {
+      "id" : "01",
+      "name" : "First Encounters",
+      "description" : "This is an example missions description",
+      "unlockable" : "Roman",
+      "criteria" : [
+        {
+          "character" : "Brand",
+          "wins" : 5
+        }
+      ]
+    },
+    {
+      "id" : "",
+      "name" : "",
+      "description" : "",
+      "unlockable" : "",
+      "criteria" : []
+    },
+    {
+      "id" : "",
+      "name" : "",
+      "description" : "",
+      "unlockable" : "",
+      "criteria" : []
+    },
+    {
+      "id" : "",
+      "name" : "",
+      "description" : "",
+      "unlockable" : "",
+      "criteria" : []
+    }
+  ]
+}
