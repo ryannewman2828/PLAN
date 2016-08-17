@@ -31,7 +31,9 @@
     "gulp-concat": "~2.6.0",
     "gulp-uglify": "^1.5.4",
     "gulp-rename": "^1.2.2",
+    "gulp-imagemin": "^3.0.3",
     "gulp-sass": "^2.3.2",
+    "gulp-cache": "^0.4.5",
     "mockgoose-mongoose4": "^2.1.1",
     "selenium-webdriver": "^2.53.3"
   }

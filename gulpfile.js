@@ -3,6 +3,9 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
+var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cache');
+
 
 gulp.task('scripts', function () {
     gulp.src(['./main/client/**/*.js', '!./main/client/app.min.js'])
@@ -18,9 +21,16 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./main/public/stylesheets'));
 });
 
+gulp.task('images', function() {
+    return gulp.src(['./main/public/photos/**/*', './main/public/photos/*'])
+        .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+        .pipe(gulp.dest('./main/public/final_photos'));
+});
+
 gulp.task('watch', function () {
     gulp.watch(['./main/client/**/*.js', '!./main/client/app.min.js'], ['scripts']);
     gulp.watch('./main/public/sass_stylesheets/*.scss', ['sass']);
+    gulp.watch(['./main/public/photos/**/*', './main/public/photos/*'], ['images']);
 });
 
-gulp.task('default', ['scripts', 'sass', 'watch']);
+gulp.task('default', ['scripts', 'sass', 'images', 'watch']);
