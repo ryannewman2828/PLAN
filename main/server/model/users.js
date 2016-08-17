@@ -16,7 +16,13 @@ var userSchema = new mongoose.Schema({
 		required: true
 	},
 	characters: String,
-	missions: String,
+	missions: [{
+		id : Number,
+		progress : [{
+			character : String,
+			wins : String,
+		}]
+	}],
 	profilePic: String,
 	friends: [String],
 	pendingFriends: [String],

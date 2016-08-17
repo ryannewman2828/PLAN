@@ -1,5 +1,7 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
+var fs = require('fs');
+var missions = JSON.parse(fs.readFileSync('./main/server/config/missions.json', 'utf8'));
 var User = mongoose.model('User');
 
 module.exports.register = function(req, res) {
@@ -44,13 +46,12 @@ module.exports.register = function(req, res) {
 
 
     /* Error checking finished */
-
     var onFinish = function(){
         if(!error) {
             user.username = req.body.username;
             user.email = req.body.email;
             user.characters = "";
-            user.missions = "";
+            user.missions = initMissions();
             user.profilePic = "Brand";
 
             user.setPassword(req.body.password);
@@ -96,3 +97,23 @@ module.exports.login = function(req, res) {
     })(req, res);
 
 };
+
+function initMissions(){
+    var userMissions = [];
+    for(var i = 0; i < missions.missions.length; i++){
+        var progress = [];
+        var mission = missions.missions[i];
+        for(var j = 0; j < mission.criteria.length; j++){
+            var entry = mission.criteria[j];
+            progress.push({
+                character : entry.character,
+                wins : 0
+            });
+        }
+        userMissions.push({
+            id : mission.id,
+            progress : progress
+        });
+    }
+    return userMissions;
+}
