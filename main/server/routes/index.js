@@ -12,6 +12,7 @@ var ctrlMsg = require('../controllers/messages');
 var ctrlFriend = require('../controllers/friends');
 var ctrlCharacters = require('../controllers/characters');
 var ctrlCollection = require('../controllers/collection');
+var ctrlMissions = require('../controllers/missions');
 
 // authentication
 router.post('/register', ctrlAuth.register);
@@ -21,6 +22,7 @@ router.post('/login', ctrlAuth.login);
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.get('/profile/:id', ctrlProfile.viewProfile);
 router.post('/message/:id', ctrlMsg.sendMessage);
+router.get('/missions/:id', ctrlMissions.getMissions);
 router.post('/settings/password', ctrlProfile.changePassword);
 router.post('/settings/email', ctrlProfile.changeEmail);
 router.post('/settings/profilePic', ctrlProfile.changeProfilePic);

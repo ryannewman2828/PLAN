@@ -1,11 +1,16 @@
-var fs = require('fs');
-var missions = JSON.parse(fs.readFileSync('./main/server/config/missions.json', 'utf8'));
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
 module.exports.getMissions = function (req, res) {
-
-    //do some computations here
-
-
-
-    res.status(200).json(obj);
+    User
+        .findOne({username : req.params.id})
+        .exec(function(error, user){
+            if(error){
+                res.status(400).json(error);
+            }
+            else {
+                var missions = user.missions;
+                res.status(200).json({missions : missions});
+            }
+        });
 };

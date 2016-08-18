@@ -14,8 +14,8 @@
                 .success(function (data) {
                     $scope.messages = data.messages;
                 })
-                .error(function (e) {
-                    console.log(e);
+                .error(function (error) {
+                    console.log(error);
                 });
         }
     }

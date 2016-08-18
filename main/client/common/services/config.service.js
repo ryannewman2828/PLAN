@@ -16,9 +16,15 @@
             return $http.get(url);
         };
 
+        var getMissions = function (id) {
+            var url = '/api/missions/' + id;
+            return $http.get(url);
+        };
+
         return {
             getCharacters : getCharacters,
-            getCollection : getCollection
+            getCollection : getCollection,
+            getMissions : getMissions
         };
     }
 

@@ -15,16 +15,16 @@
             .success(function (data) {
                 tempUser = data;
             })
-            .error(function (e) {
-                console.log(e);
+            .error(function (error) {
+                console.log(error);
             })
             .then(function () {
                 meanConfig.getCollection(tempUser.username)
                     .success(function (data) {
                         $scope.collection = data.collection;
                     })
-                    .error(function (err) {
-                        console.log(err);
+                    .error(function (error) {
+                        console.log(error);
                     })
                     .then(function () {
                         for(var i = 0; i < $scope.collection.length; i += 4){
