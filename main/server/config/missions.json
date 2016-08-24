@@ -1,7 +1,7 @@
 {
   "missions" : [
     {
-      "id" : "01",
+      "id" : 1,
       "name" : "First Encounters",
       "description" : "This is an example missions description",
       "unlockable" : "Roman",
@@ -13,25 +13,44 @@
       ]
     },
     {
-      "id" : "02",
-      "name" : "",
-      "description" : "",
-      "unlockable" : "",
-      "criteria" : []
+      "id" : 2,
+      "name" : "Test",
+      "description" : "Test",
+      "unlockable" : "Test",
+      "criteria" : [
+        {
+          "character" : "Brand",
+          "wins" : 5
+        },
+        {
+          "character" : "Brand",
+          "wins" : 5
+        }
+      ]
     },
     {
-      "id" : "03",
-      "name" : "",
-      "description" : "",
-      "unlockable" : "",
-      "criteria" : []
+      "id" : 3,
+      "name" : "Test",
+      "description" : "Test",
+      "unlockable" : "Test",
+      "criteria" : [
+        {
+          "character" : "Brand",
+          "wins" : 5
+        }
+      ]
     },
     {
-      "id" : "04",
-      "name" : "",
-      "description" : "",
-      "unlockable" : "",
-      "criteria" : []
+      "id" : 4,
+      "name" : "Test",
+      "description" : "Test",
+      "unlockable" : "Test",
+      "criteria" : [
+        {
+          "character" : "Brand",
+          "wins" : 5
+        }
+      ]
     }
   ]
 }
