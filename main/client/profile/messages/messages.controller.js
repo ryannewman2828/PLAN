@@ -4,20 +4,16 @@
         .module('meanApp')
         .controller('messageCtrl', messageCtrl);
 
-    messageCtrl.$inject = ['$scope', 'meanData','authentication'];
-    function messageCtrl($scope, meanData, authentication) {
+    messageCtrl.$inject = ['$scope', 'meanData'];
+    function messageCtrl($scope, meanData) {
 
-        $scope.isLoggedIn = authentication.isLoggedIn();
-
-        if($scope.isLoggedIn) {
-            meanData.getProfile()
-                .success(function (data) {
-                    $scope.messages = data.messages;
-                })
-                .error(function (error) {
-                    console.log(error);
-                });
-        }
+        meanData.getProfile()
+            .success(function (data) {
+                $scope.messages = data.messages;
+            })
+            .error(function (error) {
+                console.log(error);
+            });
     }
 
 })();
