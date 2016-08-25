@@ -22,6 +22,7 @@ router.post('/login', ctrlAuth.login);
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.get('/profile/:id', ctrlProfile.viewProfile);
 router.post('/message/:id', ctrlMsg.sendMessage);
+router.post('/delete-message/:id', ctrlMsg.deleteMessage);
 router.get('/missions/:id', ctrlMissions.getMissions);
 router.post('/settings/password', ctrlProfile.changePassword);
 router.post('/settings/email', ctrlProfile.changeEmail);

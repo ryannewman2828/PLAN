@@ -21,7 +21,24 @@ module.exports.sendMessage = function (req, res) {
 };
 
 module.exports.deleteMessage = function (req, res) {
-
+    User
+        .findOne({username : req.params.id})
+        .exec(function(err, user){
+            if(err){
+                res.status(400).json(err);
+            }
+            else {
+                var messages = user.messages;
+                for(var i = 0; i < messages.length; i++){
+                    if(req.body.id == messages[i]._id){
+                        messages.splice(i, 1);
+                    }
+                }
+                user.messages = messages;
+                user.save();
+                res.status(200).json({message : 'message deleted successfully'});
+            }
+        });
 };
 
 module.exports.removeExpiredMessages = function (req, res) {

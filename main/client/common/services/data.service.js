@@ -27,8 +27,13 @@
                 sender : sender,
                 dateSent : date,
                 message : message
-            }
+            };
             return $http.post(url, request);
+        };
+
+        var deleteMessage = function (user, id) {
+            var url = 'api/delete-message/' + user;
+            return $http.post(url, {id : id});
         };
         
         var addFriend = function (sender, receiver) {
@@ -67,6 +72,7 @@
             getProfile : getProfile,
             getProfileById : getProfileById,
             sendMessage : sendMessage,
+            deleteMessage : deleteMessage,
             addFriend : addFriend,
             acceptFriend : acceptFriend,
             rejectFriend : rejectFriend,
