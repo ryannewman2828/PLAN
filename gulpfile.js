@@ -24,7 +24,7 @@ gulp.task('sass', function () {
 gulp.task('images', function() {
     return gulp.src(['./main/public/photos/**/*', './main/public/photos/*'])
         .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-        .pipe(gulp.dest('./main/public/final_photos'));
+        .pipe(gulp.dest('./main/public/compressed_photos'));
 });
 
 gulp.task('watch', function () {

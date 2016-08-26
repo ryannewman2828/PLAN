@@ -14,14 +14,14 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <img src="/photos/characters/{{displayChar.name}}/profile.jpg" ng-click="changeAttack(0)" />
+                                            <img src="/compressed_photos/characters/{{displayChar.name}}/profile.jpg" ng-click="changeAttack(0)" />
                                         </div>
                                         <div class="col-md-8">
                                             <ul class="list-inline">
-                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(1)" /></li>
-                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(2)" /></li>
-                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(3)" /></li>
-                                                <li><img src="/photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(4)" /></li>
+                                                <li><img src="/compressed_photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(1)" /></li>
+                                                <li><img src="/compressed_photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(2)" /></li>
+                                                <li><img src="/compressed_photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(3)" /></li>
+                                                <li><img src="/compressed_photos/characters/{{displayChar.name}}/attack1.jpg" ng-click="changeAttack(4)" /></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@
                             <li ng-repeat="i in indices">
                                 <ul class="list-inline">
                                     <li ng-repeat="j in [0, 1, 2, 3]" class="col-md-3">
-                                        <img src="/photos/characters/{{characters[i + j].name}}/profile.jpg" ng-click="changeDisplay(i + j)" class="img-responsive" />
+                                        <img src="/compressed_photos/characters/{{characters[i + j].name}}/profile.jpg" ng-click="changeDisplay(i + j)" class="img-responsive" />
                                     </li>
                                 </ul>
                             </li>

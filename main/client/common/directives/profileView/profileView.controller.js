@@ -4,8 +4,8 @@
         .module('meanApp')
         .controller('profileViewCtrl', profileViewCtrl);
 
-    profileViewCtrl.$inject = ['$scope','$location','meanData','authentication'];
-    function profileViewCtrl($scope, $location, meanData, authentication) {
+    profileViewCtrl.$inject = ['$scope','$window','meanData','authentication'];
+    function profileViewCtrl($scope, $window, meanData, authentication) {
 
         $scope.userSidebar = {};
         $scope.searchID = "";
@@ -15,7 +15,7 @@
         $scope.logOut = function () {
             console.log('logout');
             authentication.logout();
-            $location.path('/');
+            $window.location.href = '/';
         };
         
         if($scope.isLoggedIn) {
@@ -30,7 +30,7 @@
 
         $scope.search = function(keyCode){
             if(keyCode === 13){
-                $location.path('profile/' + $scope.searchID);
+                $window.location.href = 'profile/' + $scope.searchID;
             }
         };
     }
