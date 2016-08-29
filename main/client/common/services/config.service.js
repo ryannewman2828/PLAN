@@ -20,11 +20,22 @@
             var url = '/api/missions/' + id;
             return $http.get(url);
         };
+        
+        var getChapters = function () {
+            return $http.get('/api/lore')
+        };
+
+        var getChapter = function (id){
+            var url = '/api/lore/' + id;
+            return $http.get(url);
+        };
 
         return {
             getCharacters : getCharacters,
             getCollection : getCollection,
-            getMissions : getMissions
+            getMissions : getMissions,
+            getChapters : getChapters,
+            getChapter : getChapter
         };
     }
 

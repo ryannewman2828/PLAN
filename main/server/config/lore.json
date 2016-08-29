@@ -1,0 +1,12 @@
+{
+  "chapters" : [
+    {
+      "chapter" : "Prologue",
+      "content" : "This is an example lore post for testing purposes"
+    },
+    {
+      "chapter" : "Chapter 1: Robbery",
+      "content" : "Also a test"
+    }
+  ]
+}

@@ -13,6 +13,7 @@ var ctrlFriend = require('../controllers/friends');
 var ctrlCharacters = require('../controllers/characters');
 var ctrlCollection = require('../controllers/collection');
 var ctrlMissions = require('../controllers/missions');
+var ctrlLore = require('../controllers/lore');
 
 // authentication
 router.post('/register', ctrlAuth.register);
@@ -37,5 +38,9 @@ router.post('/delete-friend/:id', ctrlFriend.deleteFriend);
 // collection
 router.get('/characters', ctrlCharacters.getCharacters);
 router.get('/collection/:id', ctrlCollection.getCollection);
+
+// lore
+router.get('/lore', ctrlLore.getLoreChapters);
+router.get('/lore/:id', ctrlLore.getLoreBody);
 
 module.exports = router;

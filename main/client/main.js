@@ -28,6 +28,14 @@
                 templateUrl: '/characters/characters.view.html',
                 controller: 'charCtrl',
             })
+            .when('/lore', {
+                templateUrl: '/lore/lore.view.html',
+                controller: 'loreCtrl',
+            })
+            .when('/lore/:id', {
+                templateUrl: '/lore/loreBody.view.html',
+                controller: 'loreCtrl',
+            })
             .when('/profile/:id', {
                 templateUrl: '/profile/profile/profile.view.html',
                 controller: 'profileCtrl',
