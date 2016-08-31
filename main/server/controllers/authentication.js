@@ -50,7 +50,7 @@ module.exports.register = function(req, res) {
         if(!error) {
             user.username = req.body.username;
             user.email = req.body.email;
-            user.characters = "";
+            user.characters = "FF";
             user.missions = initMissions();
             user.profilePic = "Brand";
 

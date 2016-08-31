@@ -2,37 +2,57 @@
   "missions" : [
     {
       "id" : 1,
-      "name" : "First Encounters",
-      "description" : "This is an example missions description",
-      "unlockable" : "Roman",
+      "name" : "Father of Time",
+      "description" : "The leader of the mages in the great magic war. His Magical power is said to still be unrivaled even today.",
+      "unlockable" : "Chronos",
       "criteria" : [
         {
-          "character" : "Brand",
+          "character" : "Any",
           "wins" : 5
         }
       ]
     },
     {
       "id" : 2,
-      "name" : "Test",
-      "description" : "Test",
-      "unlockable" : "Test",
+      "name" : "Angels Ascended",
+      "description" : "The leader of the mortals in the great magic war. She was one of the first to wield experimental magical hybrid weaponery",
+      "unlockable" : "Mercury",
       "criteria" : [
         {
-          "character" : "Brand",
-          "wins" : 5
-        },
-        {
-          "character" : "Brand",
-          "wins" : 5
+          "character" : "Any",
+          "wins" : 10
         }
       ]
     },
     {
       "id" : 3,
-      "name" : "Test",
-      "description" : "Test",
-      "unlockable" : "Test",
+      "name" : "Loss of a Legend",
+      "description" : "One of Chronos' most respected generals. He had a great hand in ending the war.",
+      "unlockable" : "Haden",
+      "criteria" : [
+        {
+          "character" : "Chronos",
+          "wins" : 10
+        }
+      ]
+    },
+    {
+      "id" : 4,
+      "name" : "Experimentation",
+      "description" : "On the side of the mortals, he was responsible for building the magical hybrid weapons. ",
+      "unlockable" : "Apollan",
+      "criteria" : [
+        {
+          "character" : "Mercury",
+          "wins" : 5
+        }
+      ]
+    },
+    {
+      "id" : 5,
+      "name" : "Master of Data",
+      "description" : "The leader of one of the most popular guilds of Vanos, called to stop an abnormal train robbery.",
+      "unlockable" : "Fractal",
       "criteria" : [
         {
           "character" : "Brand",
@@ -41,14 +61,150 @@
       ]
     },
     {
-      "id" : 4,
-      "name" : "Test",
-      "description" : "Test",
-      "unlockable" : "Test",
+      "id" : 6,
+      "name" : "Master of Speed",
+      "description" : "A magic user from one of the most popular guilds of Vanos, called to stop an abnormal train robbery.",
+      "unlockable" : "Clash",
+      "criteria" : [
+        {
+          "character" : "Kain",
+          "wins" : 5
+        }
+      ]
+    },
+    {
+      "id" : 7,
+      "name" : "Master Swordsman",
+      "description" : "A mortal from one of the most popular teams of Vanos, called to stop an abnormal train robbery.",
+      "unlockable" : "Shen",
+      "criteria" : [
+        {
+          "character" : "Eris",
+          "wins" : 5
+        }
+      ]
+    },
+    {
+      "id" : 8,
+      "name" : "First Encounters",
+      "description" : "A train travelling through Vanos is holding valuable cargo that has attracted the wrong type of attention.",
+      "unlockable" : "Roman",
+      "criteria" : [
+        {
+          "character" : "Fractal",
+          "wins" : 5
+        },
+        {
+          "character" : "Clash",
+          "wins" : 5
+        },
+        {
+          "character" : "Shen",
+          "wins" : 5
+        }
+      ]
+    },
+    {
+      "id" : 9,
+      "name" : "Diplomatic Mission",
+      "description" : "After the land of Zenith received an anonymous threat, the gang was sent to investigate.",
+      "unlockable" : "Augustus",
+      "criteria" : [
+        {
+          "character" : "Ashura",
+          "wins" : 5
+        },
+        {
+          "character" : "Relik",
+          "wins" : 5
+        },
+        {
+          "character" : "Alice",
+          "wins" : 5
+        }
+      ]
+    },
+    {
+      "id" : 10,
+      "name" : "Leader of Zenith",
+      "description" : "The leader of Zenith and the Chosen of the light, one of the most powerful mages in the land.",
+      "unlockable" : "Cecil",
+      "criteria" : [
+        {
+          "character" : "Augustus",
+          "wins" : 10
+        }
+      ]
+    },
+    {
+      "id" : 11,
+      "name" : "Attack on Zenith",
+      "description" : "A mysterious villian has laid a siege on Zenith.",
+      "unlockable" : "Bone Chewer",
+      "criteria" : [
+        {
+          "character" : "Augustus",
+          "wins" : 5
+        }
+      ]
+    },
+    {
+      "id" : 12,
+      "name" : "Solar Flare",
+      "description" : "One of Cecil's most trusted generals turns out to be working for someone else.",
+      "unlockable" : "General Solstice",
+      "criteria" : [
+        {
+          "character" : "Bone Chewer",
+          "wins" : 10
+        }
+      ]
+    },
+    {
+      "id" : 13,
+      "name" : "Dark Clown",
+      "description" : "A powerful mage sent to eliminate the chosen of the Earth.",
+      "unlockable" : "Dimentio",
+      "criteria" : [
+        {
+          "character" : "General Solstice",
+          "wins" : 20
+        }
+      ]
+    },
+    {
+      "id" : 14,
+      "name" : "Chosen of the Earth",
+      "description" : "The chosen of the Earth seems to be met against an unpredictable foe.",
+      "unlockable" : "Gorem",
+      "criteria" : [
+        {
+          "character" : "General Solstice",
+          "wins" : 10
+        }
+      ]
+    },
+    {
+      "id" : 15,
+      "name" : "Build God then we'll talk",
+      "description" : "The chosen of Darkness, never has met his god, has escaped captivity.",
+      "unlockable" : "Discord",
       "criteria" : [
         {
           "character" : "Brand",
-          "wins" : 5
+          "wins" : 25
+        }
+      ]
+    },
+    {
+      "id" : 16,
+      "name" : "Plan-S",
+      "description" : "All guilds have been requested to take part in a hunt for an Rank-S Criminal.",
+      "unlockable" : "Karata",
+      "criteria" : [
+        {
+          "character" : "Any",
+          "wins" : 50
         }
       ]
     }

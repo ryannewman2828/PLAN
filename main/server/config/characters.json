@@ -45,28 +45,6 @@
       "4AttackDesc" : ""
     },
     {
-      "name" : "Lumin",
-      "1Attack" : "",
-      "1AttackDesc" : "",
-      "2Attack" : "",
-      "2AttackDesc" : "",
-      "3Attack" : "",
-      "3AttackDesc" : "",
-      "4Attack" : "",
-      "4AttackDesc" : ""
-    },
-    {
-      "name" : "Theta",
-      "1Attack" : "",
-      "1AttackDesc" : "",
-      "2Attack" : "",
-      "2AttackDesc" : "",
-      "3Attack" : "",
-      "3AttackDesc" : "",
-      "4Attack" : "",
-      "4AttackDesc" : ""
-    },
-    {
       "name" : "Relik",
       "1Attack" : "",
       "1AttackDesc" : "",
@@ -89,6 +67,105 @@
       "4AttackDesc" : ""
     },
     {
+      "name" : "Lumin",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Theta",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Chronos",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Mercury",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Haden",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Apollan",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Fractal",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Clash",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "Shen",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
       "name" : "Roman",
       "1Attack" : "",
       "1AttackDesc" : "",
@@ -100,18 +177,7 @@
       "4AttackDesc" : ""
     },
     {
-      "name" : "General Solstice",
-      "1Attack" : "",
-      "1AttackDesc" : "",
-      "2Attack" : "",
-      "2AttackDesc" : "",
-      "3Attack" : "",
-      "3AttackDesc" : "",
-      "4Attack" : "",
-      "4AttackDesc" : ""
-    },
-    {
-      "name" : "Bone Chewer",
+      "name" : "Augustus",
       "1Attack" : "",
       "1AttackDesc" : "",
       "2Attack" : "",
@@ -133,7 +199,18 @@
       "4AttackDesc" : ""
     },
     {
-      "name" : "Augustus",
+      "name" : "Bone Chewer",
+      "1Attack" : "",
+      "1AttackDesc" : "",
+      "2Attack" : "",
+      "2AttackDesc" : "",
+      "3Attack" : "",
+      "3AttackDesc" : "",
+      "4Attack" : "",
+      "4AttackDesc" : ""
+    },
+    {
+      "name" : "General Solstice",
       "1Attack" : "",
       "1AttackDesc" : "",
       "2Attack" : "",
