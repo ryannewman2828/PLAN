@@ -38,7 +38,7 @@
                 payload = JSON.parse(payload);
                 return {
                     email : payload.email,
-                    name : payload.name
+                    name : payload.username
                 };
             }
         };

@@ -27,51 +27,51 @@ module.exports.register = function(req, res) {
     }
 
     // non-unique username
-    User.findOne({username : req.body.username}, function (err, existingUser) {
-        if(existingUser){
-            error = true;
-            errorMessage.push("This Username already exists");
-        }
-
-        // non-unique email
-        User.findOne({email : req.body.email}, function (err, existingEmail) {
-            if(existingEmail){
+    User
+        .findOne({username : req.body.username})
+        .exec(function (err, existingUser) {
+            if(existingUser){
                 error = true;
-                errorMessage.push("This email is already in use");
+                errorMessage.push("This Username already exists");
             }
-            onFinish();
-        });
-    });
+        })
+        .then(function () {
+            // non-unique email
+            User
+                .findOne({email : req.body.email})
+                .exec(function (err, existingEmail) {
+                    if(existingEmail){
+                        error = true;
+                        errorMessage.push("This email is already in use");
+                    }
+                })
+                .then(function () {
+                    /* Error checking finished */
+                    if(!error) {
+                        user.username = req.body.username;
+                        user.email = req.body.email;
+                        user.characters = "FF";
+                        user.missions = initMissions();
+                        user.profilePic = "Brand";
 
+                        user.setPassword(req.body.password);
 
-
-    /* Error checking finished */
-    var onFinish = function(){
-        if(!error) {
-            user.username = req.body.username;
-            user.email = req.body.email;
-            user.characters = "FF";
-            user.missions = initMissions();
-            user.profilePic = "Brand";
-
-            user.setPassword(req.body.password);
-
-            user.save(function (err) {
-                var token;
-                token = user.generateJwt();
-                res.status(200);
-                res.json({
-                    "token": token
+                        user.save(function (err) {
+                            var token;
+                            token = user.generateJwt();
+                            res.status(200);
+                            res.json({
+                                "token": token
+                            });
+                        });
+                    } else {
+                        res.status(400);
+                        res.json({
+                            "errorMessage" : errorMessage
+                        });
+                    }
                 });
-            });
-        } else {
-            res.status(400);
-            res.json({
-                "errorMessage" : errorMessage
-            });
-        }
-    }
-};
+        });
 
 module.exports.login = function(req, res) {
     passport.authenticate('local', function(err, user, info){
