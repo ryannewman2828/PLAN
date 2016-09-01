@@ -12,25 +12,25 @@ module.exports.register = function(req, res) {
     var errorMessage = [];
 
     // empty fields
-    if(req.body.username === "" ||
-    req.body.email === "" ||
-    req.body.password === "" ||
-    req.body.confirmPass === ""){
+    if (req.body.username === "" ||
+        req.body.email === "" ||
+        req.body.password === "" ||
+        req.body.confirmPass === "") {
         error = true;
         errorMessage.push("One or more fields have been left blank");
     }
 
     // passwords don't match
-    if(req.body.password !== req.body.confirmPass){
+    if (req.body.password !== req.body.confirmPass) {
         error = true;
         errorMessage.push("Passwords don't match");
     }
 
     // non-unique username
     User
-        .findOne({username : req.body.username})
+        .findOne({username: req.body.username})
         .exec(function (err, existingUser) {
-            if(existingUser){
+            if (existingUser) {
                 error = true;
                 errorMessage.push("This Username already exists");
             }
@@ -38,16 +38,16 @@ module.exports.register = function(req, res) {
         .then(function () {
             // non-unique email
             User
-                .findOne({email : req.body.email})
+                .findOne({email: req.body.email})
                 .exec(function (err, existingEmail) {
-                    if(existingEmail){
+                    if (existingEmail) {
                         error = true;
                         errorMessage.push("This email is already in use");
                     }
                 })
                 .then(function () {
                     /* Error checking finished */
-                    if(!error) {
+                    if (!error) {
                         user.username = req.body.username;
                         user.email = req.body.email;
                         user.characters = "FF";
@@ -72,6 +72,7 @@ module.exports.register = function(req, res) {
                     }
                 });
         });
+};
 
 module.exports.login = function(req, res) {
     passport.authenticate('local', function(err, user, info){
