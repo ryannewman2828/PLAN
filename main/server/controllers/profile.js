@@ -70,9 +70,3 @@ module.exports.changeEmail = function (req, res) {
             }
         });
 };
-
-module.exports.changeProfilePic = function (req, res) {
-    User.update({ username : req.body.username }, { $set: { profilePic : req.body.profilePic }}, function () {
-        res.status(200).json({message : "Profile picture was successfully changed"});
-    });
-};

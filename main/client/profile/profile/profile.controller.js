@@ -4,19 +4,16 @@
         .module('meanApp')
         .controller('profileCtrl', profileCtrl);
 
-    profileCtrl.$inject = ['$scope', '$routeParams','$route', '$uibModal', 'meanData', 'meanConfig'];
-    function profileCtrl($scope, $routeParams, $route, $uibModal, meanData, meanConfig) {
+    profileCtrl.$inject = ['$scope', '$routeParams','$route', '$uibModal', 'meanData'];
+    function profileCtrl($scope, $routeParams, $route, $uibModal, meanData) {
 
         var id = $routeParams.id;
         $scope.user = {};
-        $scope.displayFriends = true;
-        $scope.indices = [];
 
         if(id){
             meanData.getProfileById(id)
                 .success(function (data) {
                     $scope.user = data;
-
                 })
                 .error(function (err) {
                     console.log(err);
@@ -30,20 +27,6 @@
                         .error(function (err) {
                             console.log(err)
                         });
-                })
-                .then(function () {
-                   meanConfig.getCollection($scope.user.username)
-                        .success(function (data) {
-                            $scope.collection = data.collection;
-                        })
-                       .error(function (err) {
-                           console.log(err);
-                       })
-                       .then(function () {
-                           for(var i = 0; i < $scope.collection.length; i += 4){
-                               $scope.indices.push(i);
-                           }
-                       });
                 });
 
         } else {
@@ -54,22 +37,7 @@
                 })
                 .error(function (e) {
                     console.log(e);
-                })
-                .then(function () {
-                    meanConfig.getCollection($scope.user.username)
-                        .success(function (data) {
-                            $scope.collection = data.collection;
-                        })
-                        .error(function (err) {
-                            console.log(err);
-                        })
-                        .then(function () {
-                            for(var i = 0; i < $scope.collection.length; i += 4){
-                                $scope.indices.push(i);
-                            }
-                        });
                 });
-
         }
         
         $scope.open = function (size) {

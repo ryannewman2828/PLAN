@@ -24,12 +24,7 @@
             </ul>
         </div>
 
-        <div class="btn-group btn-group-justified">
-            <p ng-click="displayFriends=true" class="btn btn-primary">Friends</p>
-            <p ng-click="displayFriends=false" class="btn btn-primary">Collection</p>
-        </div>
-        <div ng-show="displayFriends">
-
+        <div>
             <ul ng-show="myProfile && user.pendingFriends.length !== 0">
                 <h2>Pending Friends</h2>
                 <li ng-repeat="friend in user.pendingFriends">
@@ -47,22 +42,5 @@
                 <h4 ng-show="user.pendingFriends.length === 0 && user.friends.length === 0">No Friends to Display</h4>
             </ul>
         </div>
-
-        <div ng-hide="displayFriends">
-            <div class="col-sm-12">
-                <div class="row">
-                    <ul>
-                        <li ng-repeat="i in indices">
-                            <ul class="list-inline">
-                                <li ng-repeat="j in [0, 1, 2, 3]" class="col-md-3">
-                                    <img src="/compressed_photos/characters/{{collection[i + j].name}}/profile.jpg" class="img-responsive" />
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>

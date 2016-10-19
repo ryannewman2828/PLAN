@@ -36,22 +36,5 @@
             </form>
         </div>
         <br><br>
-        <div>
-            <h3>Choose a profile picture from your unlocked characters</h3>
-            <div class="col-sm-12">
-                <div class="row">
-                    <ul>
-                        <li ng-repeat="i in indices">
-                            <ul class="list-inline">
-                                <li ng-repeat="j in [0, 1, 2, 3]" class="col-md-3">
-                                    <img src="/compressed_photos/characters/{{collection[i + j].name}}/profile.jpg" ng-click="onClickProfilePic(i + j)" class="img-responsive" />
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        <div>
-
     </div>
 </div>

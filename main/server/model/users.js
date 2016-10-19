@@ -15,15 +15,6 @@ var userSchema = new mongoose.Schema({
 		unique: true,
 		required: true
 	},
-	characters: String,
-	missions: [{
-		id : Number,
-		progress : [{
-			character : String,
-			wins : String,
-		}]
-	}],
-	profilePic: String,
 	friends: [String],
 	pendingFriends: [String],
 	messages: [{

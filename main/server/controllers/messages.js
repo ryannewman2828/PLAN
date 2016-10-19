@@ -40,7 +40,3 @@ module.exports.deleteMessage = function (req, res) {
             }
         });
 };
-
-module.exports.removeExpiredMessages = function (req, res) {
-
-};
