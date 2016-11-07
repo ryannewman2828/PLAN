@@ -8,6 +8,8 @@
     function navigationCtrl($scope, authentication) {
 
         $scope.isLoggedIn = authentication.isLoggedIn();
+
+        $scope.logout = authentication.logout();
     }
 
 })();
