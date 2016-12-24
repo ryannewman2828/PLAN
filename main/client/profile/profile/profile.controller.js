@@ -9,7 +9,7 @@
 
         var id = $routeParams.id;
         $scope.user = {};
-
+        
         if(id){
             meanData.getProfileById(id)
                 .success(function (data) {
