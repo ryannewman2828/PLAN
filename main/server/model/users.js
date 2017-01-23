@@ -48,7 +48,7 @@ userSchema.methods.generateJwt = function () {
 	var expiry = new Date();
 	expiry.setDate(expiry.getDate() + DAY_IN_WEEK);
 
-	// TODO: Move SECRET to an external file or the database itself
+	// TODO: Move SECRET to an external file
 	return jwt.sign({
 		_id: this._id,
 		email: this.email,
