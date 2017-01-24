@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('meanApp', ['ui.bootstrap', 'ngRoute']);
+    angular.module('plan', ['ui.bootstrap', 'ngRoute']);
 
     function config ($routeProvider, $locationProvider) {
         $routeProvider
@@ -16,21 +16,9 @@
                 templateUrl: '/authentication/login/login.view.html',
                 controller: 'loginCtrl',
             })
-            .when('/message', {
-                templateUrl: '/profile/messages/messages.view.html',
-                controller: 'messageCtrl',
-            })
-            .when('/profile/:id', {
-                templateUrl: '/profile/profile/profile.view.html',
-                controller: 'profileCtrl',
-            })
             .when('/profile', {
                 templateUrl: '/profile/profile/profile.view.html',
                 controller: 'profileCtrl',
-            })
-            .when('/settings', {
-                templateUrl: '/profile/settings/settings.view.html',
-                controller: 'settingsCtrl',
             })
             .otherwise({redirectTo: '/'});
 
@@ -48,7 +36,7 @@
     }
 
     angular
-        .module('meanApp')
+        .module('plan')
         .config(['$routeProvider', '$locationProvider', config])
         .run(['$rootScope', '$location', 'authentication', run]);
 

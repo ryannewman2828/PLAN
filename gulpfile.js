@@ -10,7 +10,7 @@ var cache = require('gulp-cache');
 gulp.task('scripts', function () {
     gulp.src(['./main/client/**/*.js', '!./main/client/app.min.js'])
         .pipe(concat('app.min.js'))
-        //   .pipe(uglify()) // TODO: uncomment, this is for debugging purposes only
+        .pipe(uglify())
         .pipe(gulp.dest('./main/client'));
 });
 

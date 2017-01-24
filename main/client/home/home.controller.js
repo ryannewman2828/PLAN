@@ -1,7 +1,7 @@
 (function() {
 
     angular
-        .module('meanApp')
+        .module('plan')
         .controller('homeCtrl', homeCtrl);
 
     function homeCtrl () {
