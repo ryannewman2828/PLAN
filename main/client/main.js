@@ -6,19 +6,19 @@
         $routeProvider
             .when('/', {
                 templateUrl: '/home/home.view.html',
-                controller: 'homeCtrl',
+                controller: 'homeCtrl'
             })
             .when('/register', {
                 templateUrl: '/authentication/register/register.view.html',
-                controller: 'registerCtrl',
+                controller: 'registerCtrl'
             })
             .when('/login', {
                 templateUrl: '/authentication/login/login.view.html',
-                controller: 'loginCtrl',
+                controller: 'loginCtrl'
             })
             .when('/profile', {
                 templateUrl: '/profile/profile/profile.view.html',
-                controller: 'profileCtrl',
+                controller: 'profileCtrl'
             })
             .otherwise({redirectTo: '/'});
 

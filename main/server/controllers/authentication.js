@@ -3,15 +3,12 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 module.exports.register = function(req, res) {
-    var user = new User();
-
     /* Error checking here */
     var error = false;
     var errorMessage = [];
 
     // empty fields
     if (req.body.username === "" ||
-        req.body.email === "" ||
         req.body.password === "" ||
         req.body.confirmPass === "") {
         error = true;
@@ -34,43 +31,38 @@ module.exports.register = function(req, res) {
             }
         })
         .then(function () {
-            // non-unique email
-            User
-                .findOne({email: req.body.email})
-                .exec(function (err, existingEmail) {
-                    if (existingEmail) {
-                        error = true;
-                        errorMessage.push("This email is already in use");
+            /* Error checking finished */
+            if (!error) {
+                passport.authenticate('local-signup', function (err, user, info) {
+                    var token;
+
+                    // If Passport throws/catches an error
+                    if (err) {
+                        console.log('error');
+                        res.status(404).json(err);
+                        return;
                     }
-                })
-                .then(function () {
-                    /* Error checking finished */
-                    if (!error) {
-                        user.username = req.body.username;
-                        user.email = req.body.email;
 
-                        user.setPassword(req.body.password);
-
-                        user.save(function (err) {
-                            var token;
-                            token = user.generateJwt();
-                            res.status(200);
-                            res.json({
-                                "token": token
-                            });
-                        });
-                    } else {
-                        res.status(400);
+                    // If a user is found
+                    if(user){
+                        token = user.generateJwt();
+                        res.status(200);
                         res.json({
-                            "errorMessage" : errorMessage
+                            "token" : token
                         });
                     }
+                })(req, res);
+            } else {
+                res.status(400);
+                res.json({
+                    "errorMessage" : errorMessage
                 });
+            }
         });
 };
 
 module.exports.login = function(req, res) {
-    passport.authenticate('local', function(err, user, info){
+    passport.authenticate('local-login', function(err, user, info){
         var token;
 
         // If Passport throws/catches an error

@@ -11,30 +11,55 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var configAuth = require('./auth');
 
 
-passport.use(new LocalStrategy({
-        usernameField: 'email'
-    },
+passport.use('local-signup', new LocalStrategy(
     function(username, password, done) {
-        User.findOne({ email: username }, function (err, user) {
+        User.findOne({ username: username }, function (err, user) {
             if (err) {
                 return done(err);
             }
 
-            // Return if user not found in database
-            if (!user) {
+            if (user) {
                 return done(null, false, {
-                    message: 'User not found'
+                    message: 'User already exists'
                 });
-            }
+            } else {
+                var newUser = new User();
 
-            // Return if password is wrong
-            if (!user.verifyPassword(password)) {
-                return done(null, false, {
-                    message: 'Password is wrong'
+                newUser.local.username = username;
+                newUser.setPassword(password);
+
+                // save the user
+                newUser.save(function(err) {
+                    if (err) {
+                        throw err;
+                    }
+                    return done(null, newUser);
                 });
             }
-            // If credentials are correct, return the user object
-            return done(null, user);
         });
     }
 ));
+
+passport.use('local-login', new LocalStrategy(
+    function(username, password, done) {
+        console.log(username)
+        User.findOne({ 'local.username': username }, function (err, user) {
+            if (err) {
+                return done(err);
+            }
+
+            if (!user) {
+                return done(null, false, {
+                    message: "User doesn't exists"
+                });
+            }
+
+            if (!user.verifyPassword(password)) {
+                return done(null, false, {
+                    message: "Password isn't correct"
+                });
+            }
+
+            return done(null, user);
+        });
+    }));

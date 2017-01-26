@@ -8,7 +8,7 @@
     function loginCtrl($location, $scope, authentication) {
 
         $scope.credentials = {
-            email : "",
+            username : "",
             password : ""
         };
 
@@ -19,7 +19,7 @@
                     alert(err.message);
                 })
                 .then(function(){
-                    $location.path('/');
+                    $location.path('/profile');
                 });
         };
 

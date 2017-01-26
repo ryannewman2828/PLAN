@@ -2,7 +2,7 @@
 
     angular
         .module('plan')
-        .service('plan', planData);
+        .service('planData', planData);
 
     planData.$inject = ['$http', 'authentication'];
     function planData ($http, authentication) {

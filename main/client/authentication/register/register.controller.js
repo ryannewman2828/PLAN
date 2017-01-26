@@ -12,7 +12,6 @@
 
         $scope.credentials = {
             username: "",
-            email : "",
             password : "",
             confirmPass : ""
         };
