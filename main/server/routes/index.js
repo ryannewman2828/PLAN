@@ -12,8 +12,6 @@ var ctrlAuth = require('../controllers/authentication');
 
 // authentication
 router.post('/register', ctrlAuth.register);
-router.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-router.get('/auth/facebook/callback', ctrlAuth.facebookCallback);
 router.post('/login', ctrlAuth.login);
 
 // profile

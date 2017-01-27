@@ -4,7 +4,9 @@
         .module('plan')
         .controller('homeCtrl', homeCtrl);
 
-    function homeCtrl () {
+    function homeCtrl() {
+
     }
+
 
 })();
