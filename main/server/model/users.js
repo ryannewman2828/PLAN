@@ -6,8 +6,8 @@ var userSchema = new mongoose.Schema({
 	local            : {
 		username: {
 			type: String,
-			unique: true,
-			required: true
+			unique: true
+			//required: true
 		},
 		hash: String,
 		salt: String
@@ -15,7 +15,7 @@ var userSchema = new mongoose.Schema({
 	facebook         : {
 		id           : String,
 		token        : String,
-		email        : String,
+		//email        : String, // for live only
 		name         : String
 	},
 	google           : {
@@ -44,6 +44,7 @@ userSchema.methods.generateJwt = function () {
 	return jwt.sign({
 		_id: this._id,
 		username: this.local.username,
+		facebook_id: this.facebook.id,
 		exp: parseInt(expiry.getTime() / 1000)
 	}, "SECRET");
 };

@@ -4,7 +4,6 @@ var User = mongoose.model('User');
 
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-var TwitterStrategy  = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // load the auth variables
@@ -42,7 +41,6 @@ passport.use('local-signup', new LocalStrategy(
 
 passport.use('local-login', new LocalStrategy(
     function(username, password, done) {
-        console.log(username)
         User.findOne({ 'local.username': username }, function (err, user) {
             if (err) {
                 return done(err);
@@ -62,4 +60,39 @@ passport.use('local-login', new LocalStrategy(
 
             return done(null, user);
         });
-    }));
+    })
+);
+
+passport.use('facebook', new FacebookStrategy({
+        clientID        : configAuth.facebookAuth.clientID,
+        clientSecret    : configAuth.facebookAuth.clientSecret,
+        callbackURL     : configAuth.facebookAuth.callbackURL
+    },
+    function(token, refreshToken, profile, done) {
+        User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+            if (err) {
+                return done(err);
+            }
+            if (user) {
+                return done(null, user);
+            } else {
+                var newUser            = new User();
+
+                newUser.facebook.id    = profile.id;
+                newUser.facebook.token = token;
+                newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                // newUser.facebook.email = profile.emails[0].value; // for when app is live
+
+                newUser.save(function(err) {
+                    if (err) {
+                        throw err;
+                    }
+
+                    return done(null, newUser);
+                });
+            }
+
+        });
+
+    })
+);
