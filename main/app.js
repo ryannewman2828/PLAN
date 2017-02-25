@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 if(process.env.mode !== 'TESTING') {
-  process.env.mode = "PRODUCTION";
+  process.env.mode = "DEVELOPMENT";
 }
 
 var db = require('./server/model/db');
