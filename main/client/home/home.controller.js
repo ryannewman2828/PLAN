@@ -1,11 +1,12 @@
 (function() {
 
     angular
-        .module('meanApp')
+        .module('plan')
         .controller('homeCtrl', homeCtrl);
 
-    function homeCtrl () {
-        console.log('Home controller is running');
+    function homeCtrl() {
+
     }
+
 
 })();

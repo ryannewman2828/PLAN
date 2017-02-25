@@ -1,5 +1,5 @@
 {
-  "name": "NodeWebDemo",
+  "name": "PLAN",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -21,6 +21,9 @@
     "jsonwebtoken": "^7.0.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "passport-facebook" : "~1.0.2",
+    "passport-twitter" : "~1.0.2",
+    "passport-google-oauth" : "~0.1.5",
     "express-jwt": "^3.4.0"
   },
   "devDependencies": {

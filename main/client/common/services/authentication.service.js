@@ -1,7 +1,7 @@
 (function () {
 
     angular
-        .module('meanApp')
+        .module('plan')
         .service('authentication', authentication);
 
     authentication.$inject = ['$http', '$window'];
@@ -37,7 +37,6 @@
                 payload = $window.atob(payload);
                 payload = JSON.parse(payload);
                 return {
-                    email : payload.email,
                     name : payload.username
                 };
             }

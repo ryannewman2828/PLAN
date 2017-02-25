@@ -1,68 +1,26 @@
-<navigation></navigation>
-
 <div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
     <div class="row">
 
-        <profileview></profileview>
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
 
-        <div class="col-md-4" id="profile">
+                <p>
+                    <strong>id</strong>:  {{user._id}} <br>
+                    <strong>username</strong>: {{user.local.username}}<br>
+                    <strong>password</strong>: {{user.local.hash}}
+                </p>
 
-            <h1>{{ user.username }}'s profile</h1>
-
-            <ul class="list-inline" ng-hide="myProfile">
-                <li>
-                    <button ng-click="open()" class="btn btn-default btn-sm">Message</button>
-                </li>
-                <li>
-                    <button ng-click="addFriend()" class="btn btn-default btn-sm">Add Friend</button>
-                </li>
-            </ul>
-            <ul class="list-inline" ng-show="myProfile">
-                <li>
-                    <a href="/settings" class="btn btn-default btn-lg"><span>Settings</span></a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="btn-group btn-group-justified">
-            <p ng-click="displayFriends=true" class="btn btn-primary">Friends</p>
-            <p ng-click="displayFriends=false" class="btn btn-primary">Collection</p>
-        </div>
-        <div ng-show="displayFriends">
-
-            <ul ng-show="myProfile && user.pendingFriends.length !== 0">
-                <h2>Pending Friends</h2>
-                <li ng-repeat="friend in user.pendingFriends">
-                    <a href="profile/{{friend}}">{{friend}}</a>
-                    <button ng-click="acceptFriend(friend)">Accept Friend</button>
-                    <button ng-click="rejectFriend(friend)">Reject Friend</button>
-                </li>
-            </ul>
-            <ul>
-                <h2>Friends</h2>
-                <li ng-repeat="friend in user.friends">
-                    <a href="profile/{{friend}}">{{friend}}</a>
-                    <button ng-show="myProfile" ng-click="deleteFriend(friend)">Delete Friend</button>
-                </li>
-                <h4 ng-show="user.pendingFriends.length === 0 && user.friends.length === 0">No Friends to Display</h4>
-            </ul>
-        </div>
-
-        <div ng-hide="displayFriends">
-            <div class="col-sm-12">
-                <div class="row">
-                    <ul>
-                        <li ng-repeat="i in indices">
-                            <ul class="list-inline">
-                                <li ng-repeat="j in [0, 1, 2, 3]" class="col-md-3">
-                                    <img src="/compressed_photos/characters/{{collection[i + j].name}}/profile.jpg" class="img-responsive" />
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
 
     </div>
+
 </div>

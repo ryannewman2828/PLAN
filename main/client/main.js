@@ -1,52 +1,24 @@
 (function () {
 
-    angular.module('meanApp', ['ui.bootstrap', 'ngRoute']);
+    angular.module('plan', ['ui.bootstrap', 'ngRoute']);
 
     function config ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: '/home/home.view.html',
-                controller: 'homeCtrl',
+                controller: 'homeCtrl'
             })
             .when('/register', {
                 templateUrl: '/authentication/register/register.view.html',
-                controller: 'registerCtrl',
+                controller: 'registerCtrl'
             })
             .when('/login', {
                 templateUrl: '/authentication/login/login.view.html',
-                controller: 'loginCtrl',
-            })
-            .when('/message', {
-                templateUrl: '/profile/messages/messages.view.html',
-                controller: 'messageCtrl',
-            })
-            .when('/missions', {
-                templateUrl: '/profile/missions/missions.view.html',
-                controller: 'missionCtrl',
-            })
-            .when('/characters', {
-                templateUrl: '/characters/characters.view.html',
-                controller: 'charCtrl',
-            })
-            .when('/lore', {
-                templateUrl: '/lore/lore.view.html',
-                controller: 'loreCtrl',
-            })
-            .when('/lore/:id', {
-                templateUrl: '/lore/loreBody.view.html',
-                controller: 'loreCtrl',
-            })
-            .when('/profile/:id', {
-                templateUrl: '/profile/profile/profile.view.html',
-                controller: 'profileCtrl',
+                controller: 'loginCtrl'
             })
             .when('/profile', {
                 templateUrl: '/profile/profile/profile.view.html',
-                controller: 'profileCtrl',
-            })
-            .when('/settings', {
-                templateUrl: '/profile/settings/settings.view.html',
-                controller: 'settingsCtrl',
+                controller: 'profileCtrl'
             })
             .otherwise({redirectTo: '/'});
 
@@ -64,7 +36,7 @@
     }
 
     angular
-        .module('meanApp')
+        .module('plan')
         .config(['$routeProvider', '$locationProvider', config])
         .run(['$rootScope', '$location', 'authentication', run]);
 

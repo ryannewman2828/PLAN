@@ -1,32 +1,98 @@
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-passport.use(new LocalStrategy({
-        usernameField: 'email'
-    },
+var LocalStrategy    = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+// load the auth variables
+var configAuth = require('./auth');
+
+
+passport.use('local-signup', new LocalStrategy(
     function(username, password, done) {
-        User.findOne({ email: username }, function (err, user) {
+        User.findOne({ username: username }, function (err, user) {
             if (err) {
                 return done(err);
             }
 
-            // Return if user not found in database
-            if (!user) {
+            if (user) {
                 return done(null, false, {
-                    message: 'User not found'
+                    message: 'User already exists'
                 });
-            }
+            } else {
+                var newUser = new User();
 
-            // Return if password is wrong
-            if (!user.verifyPassword(password)) {
-                return done(null, false, {
-                    message: 'Password is wrong'
+                newUser.local.username = username;
+                newUser.setPassword(password);
+
+                // save the user
+                newUser.save(function(err) {
+                    if (err) {
+                        throw err;
+                    }
+                    return done(null, newUser);
                 });
             }
-            // If credentials are correct, return the user object
-            return done(null, user);
         });
     }
 ));
+
+passport.use('local-login', new LocalStrategy(
+    function(username, password, done) {
+        User.findOne({ 'local.username': username }, function (err, user) {
+            if (err) {
+                return done(err);
+            }
+
+            if (!user) {
+                return done(null, false, {
+                    message: "User doesn't exists"
+                });
+            }
+
+            if (!user.verifyPassword(password)) {
+                return done(null, false, {
+                    message: "Password isn't correct"
+                });
+            }
+
+            return done(null, user);
+        });
+    })
+);
+
+passport.use('facebook', new FacebookStrategy({
+        clientID        : configAuth.facebookAuth.clientID,
+        clientSecret    : configAuth.facebookAuth.clientSecret,
+        callbackURL     : configAuth.facebookAuth.callbackURL
+    },
+    function(token, refreshToken, profile, done) {
+        User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+            if (err) {
+                return done(err);
+            }
+            if (user) {
+                return done(null, user);
+            } else {
+                var newUser            = new User();
+
+                newUser.facebook.id    = profile.id;
+                newUser.facebook.token = token;
+                newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                // newUser.facebook.email = profile.emails[0].value; // for when app is live
+
+                newUser.save(function(err) {
+                    if (err) {
+                        throw err;
+                    }
+
+                    return done(null, newUser);
+                });
+            }
+
+        });
+
+    })
+);
