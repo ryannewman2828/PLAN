@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
+// TODO configuration file or read from environment variables
 if(process.env.mode !== 'TESTING') {
   process.env.mode = "DEVELOPMENT";
 }
