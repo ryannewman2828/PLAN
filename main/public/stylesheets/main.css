@@ -1,5 +1,61 @@
+.sidenav {
+  height: 100%;
+  position: absolute;
+  width: 250px;
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #e6e6e6;
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px; }
+  .sidenav p {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block; }
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; }
+    .sidenav a {
+      font-size: 18px; } }
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
+
+.sidenav {
+  height: 100%;
+  position: absolute;
+  width: 250px;
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #e6e6e6;
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px; }
+  .sidenav p {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block; }
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; }
+    .sidenav a {
+      font-size: 18px; } }
