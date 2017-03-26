@@ -1,8 +1,8 @@
-<div ng-show="isLoggedIn" class="profile-view">
+<div ng-show="isLoggedIn()" class="profile-view">
     <div class="sidenav">
         <p>Online Users</p>
-        <p>TEMP</p>
-        <p>TEMP</p>
-        <p>TEMP</p>
+        <div ng-repeat="user in onlineUsers">
+            <p>{{user}}</p>
+        </div>
     </div>
 </div>

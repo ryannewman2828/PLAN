@@ -15,8 +15,17 @@
             });
         };
 
+        var getOnlineUsers = function () {
+            return $http.get('/api/profile/online', {
+                headers: {
+                    Authorization: 'Bearer '+ authentication.getToken()
+                }
+            });
+        };
+
         return {
-            getProfile : getProfile
+            getProfile : getProfile,
+            getOnlineUsers : getOnlineUsers
         };
     }
 

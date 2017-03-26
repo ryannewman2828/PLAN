@@ -26,6 +26,7 @@ passport.use('local-signup', new LocalStrategy(
 
                 newUser.local.username = username;
                 newUser.setPassword(password);
+                newUser.online = true;
 
                 // save the user
                 newUser.save(function(err) {
@@ -57,6 +58,13 @@ passport.use('local-login', new LocalStrategy(
                     message: "Password isn't correct"
                 });
             }
+
+            user.online = true;
+            user.save(function (err) {
+                if(err) {
+                    console.error('ERROR!');
+                }
+            });
 
             return done(null, user);
         });

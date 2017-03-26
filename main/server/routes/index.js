@@ -16,5 +16,6 @@ router.post('/login', ctrlAuth.login);
 
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
+router.get('/profile/online', auth, ctrlProfile.onlineUsers);
 
 module.exports = router;

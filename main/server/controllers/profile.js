@@ -18,3 +18,20 @@ module.exports.profileRead = function(req, res) {
     }
 
 };
+
+module.exports.onlineUsers = function (req, res) {
+    if (!req.payload._id) {
+        res.status(401).json({
+            "message" : "Invalid access token"
+        });
+    } else {
+        User
+            .find({online : true})
+            .exec(function(err, users) {
+                users = users.map(function (user) {
+                    return user.local.username;
+                });
+                res.status(200).json(users);
+            });
+    }
+};
