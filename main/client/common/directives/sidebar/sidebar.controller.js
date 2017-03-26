@@ -20,6 +20,9 @@
             console.log(username);
             $rootScope.onlineUsers.push(username);
         });
+        $rootScope.$on('$destroy', function (event) {
+            socketFact.destroy();
+        });
     }
 
 })();
