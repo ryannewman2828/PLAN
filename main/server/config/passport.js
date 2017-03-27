@@ -59,13 +59,6 @@ passport.use('local-login', new LocalStrategy(
                 });
             }
 
-            user.online = true;
-            user.save(function (err) {
-                if(err) {
-                    console.error('ERROR!');
-                }
-            });
-
             return done(null, user);
         });
     })

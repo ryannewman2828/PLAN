@@ -4,8 +4,8 @@
         .module('plan')
         .service('authentication', authentication);
 
-    authentication.$inject = ['$http', '$window', 'socketFact'];
-    function authentication ($http, $window, socketFact) {
+    authentication.$inject = ['$http', '$window'];
+    function authentication ($http, $window) {
 
         var saveToken = function (token) {
             $window.localStorage['token'] = token;
@@ -45,14 +45,14 @@
         var register = function(user) {
             return $http.post('/api/register', user).success(function(data){
                 saveToken(data.token);
-                socketFact.emit("user_login", currentId(data.token).id);
+                $window.localStorage['id'] = currentId().id;
             });
         };
 
         var login = function(user) {
             return $http.post('/api/login', user).success(function(data) {
                 saveToken(data.token);
-                socketFact.emit("user_login", currentId(data.token).id);
+                $window.localStorage['id'] = currentId().id;
             });
         };
 
