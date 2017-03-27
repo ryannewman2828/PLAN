@@ -28,6 +28,8 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  body .pushed {
+    margin-right: 250px; }
 
 a {
   color: #00B7FF; }

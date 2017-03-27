@@ -1,28 +1,29 @@
-<div class="container">
-    <sidebar></sidebar>
-</div>
-<div class="container">
-
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <button ng-click="logout()" class="btn btn-default btn-sm">Logout</button>
+<div class="pushed">
+    <div class="container">
+        <sidebar></sidebar>
     </div>
+    <div class="container">
 
-    <div class="row">
-
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                <p>
-                    <strong>id</strong>:  {{user._id}} <br>
-                    <strong>username</strong>: {{user.local.username}}<br>
-                    <strong>password</strong>: {{user.local.hash}}
-                </p>
-
-            </div>
+        <div class="page-header text-center">
+            <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+            <button ng-click="logout()" class="btn btn-default btn-sm">Logout</button>
         </div>
 
-    </div>
+        <div class="row">
 
+            <div class="col-sm-6">
+                <div class="well">
+                    <h3><span class="fa fa-user"></span> Local</h3>
+
+                    <p>
+                        <strong>id</strong>:  {{user._id}} <br>
+                        <strong>username</strong>: {{user.local.username}}<br>
+                        <strong>password</strong>: {{user.local.hash}}
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
