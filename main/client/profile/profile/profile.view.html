@@ -1,29 +1,56 @@
-<div class="pushed">
+<!-- Page Container -->
+<div class="profile pushed">
+    <!-- Sidebar -->
     <div class="container">
         <sidebar></sidebar>
     </div>
-    <div class="container">
+    <!-- End of Sidebar -->
 
-        <div class="page-header text-center">
-            <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-            <button ng-click="logout()" class="btn btn-default btn-sm">Logout</button>
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-6">
-                <div class="well">
-                    <h3><span class="fa fa-user"></span> Local</h3>
-
-                    <p>
-                        <strong>id</strong>:  {{user._id}} <br>
-                        <strong>username</strong>: {{user.local.username}}<br>
-                        <strong>password</strong>: {{user.local.hash}}
-                    </p>
-
-                </div>
+    <!-- Main Content -->
+    <div>
+        <!-- Profile-->
+        <div class="plan-container">
+            <div class="center-div center-text">
+                <h4>Username</h4>
+                <p class="center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                <hr>
+                <p>BIO</p>
+                <p>ONLINE/OFFLINE</p>
+                <p>MEETNIG/FREE</p>
             </div>
-
         </div>
+        <!-- End of Profile -->
+
+        <hr>
+        <br>
+
+        <!-- Notification -->
+        <div class="plan-container">
+            <div>
+                <!-- Carosol of notifications here -->
+            </div>
+        </div>
+        <!-- End of Notification -->
+
+        <br>
+        <hr>
+        <br>
+
+        <!-- History Panel -->
+        <div>
+            <!-- Repeat this -->
+            <div class="container">
+                <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                <span class="w3-right w3-opacity">1 min</span>
+                <h4>John Doe</h4><br>
+                <hr class="w3-clear">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+            </div>
+        </div>
+        <!-- End of History Panel -->
     </div>
+    <!-- End of Main Content -->
 </div>
+<!-- End Page Container -->

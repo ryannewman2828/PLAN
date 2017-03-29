@@ -1,13 +1,11 @@
 @import "home";
 @import "sidebar";
 @import "navbar";
+@import "common";
+@import "profile";
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
-  .pushed {
-    margin-right: 250px;
-  }
 }
 
 a {

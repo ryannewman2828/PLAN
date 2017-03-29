@@ -1,7 +1,9 @@
+$sidenav-width: 250px;
+
 .sidenav {
   height: 100%;
   position: absolute;
-  width: 250px;
+  width: $sidenav-width;
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0;
@@ -19,13 +21,21 @@
   }
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
+.pushed {
+  margin-right: $sidenav-width;
+}
 
-    a {
-      font-size: 18px;
-    }
+@media screen and (max-width: 768px) {
+  .sidenav {
+    width: 0;
+  }
+
+  .container {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .pushed {
+    margin-right: auto;
   }
 }

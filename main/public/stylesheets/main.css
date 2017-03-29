@@ -19,20 +19,43 @@
     color: black;
     display: block; }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+.pushed {
+  margin-right: 250px; }
+
+@media screen and (max-width: 768px) {
   .sidenav {
-    padding-top: 15px; }
-    .sidenav a {
-      font-size: 18px; } }
+    width: 0; }
+  .container {
+    width: 50%;
+    margin: 0 auto; }
+  .pushed {
+    margin-right: auto; } }
+
+.center-div {
+  width: 50%;
+  margin: 0 auto; }
+
+.center-text {
+  text-align: center; }
+
+.profile {
+  margin-top: 80px; }
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-  body .pushed {
-    margin-right: 250px; }
 
 a {
   color: #00B7FF; }
+
+.center-div {
+  width: 50%;
+  margin: 0 auto; }
+
+.center-text {
+  text-align: center; }
+
+.profile {
+  margin-top: 80px; }
 
 .sidenav {
   height: 100%;
@@ -55,9 +78,14 @@ a {
     color: black;
     display: block; }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+.pushed {
+  margin-right: 250px; }
+
+@media screen and (max-width: 768px) {
   .sidenav {
-    padding-top: 15px; }
-    .sidenav a {
-      font-size: 18px; } }
+    width: 0; }
+  .container {
+    width: 50%;
+    margin: 0 auto; }
+  .pushed {
+    margin-right: auto; } }

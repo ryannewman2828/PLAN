@@ -46,7 +46,7 @@ module.exports = function (io) {
                 User.findById(socket.uid).exec(function (err, user) {
                     if (err){
                         console.log(err)
-                    } else {
+                    } else if (user){
                         connected = user.online;
                         username = user.local.username;
                     }
