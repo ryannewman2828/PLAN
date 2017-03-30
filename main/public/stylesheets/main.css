@@ -31,11 +31,17 @@
   .pushed {
     margin-right: auto; } }
 
+.list-inline {
+  display: inline; }
+
 .center-div {
   width: 50%;
   margin: 0 auto; }
 
 .center-text {
+  text-align: center; }
+
+.center-list {
   text-align: center; }
 
 .profile {
@@ -47,11 +53,17 @@ body {
 a {
   color: #00B7FF; }
 
+.list-inline {
+  display: inline; }
+
 .center-div {
   width: 50%;
   margin: 0 auto; }
 
 .center-text {
+  text-align: center; }
+
+.center-list {
   text-align: center; }
 
 .profile {
