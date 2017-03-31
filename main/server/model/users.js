@@ -21,7 +21,10 @@ var userSchema = new mongoose.Schema({
     online: {
         type: Boolean,
         required: true
-    }
+    },
+    friends: {
+		type: Array
+	}
 });
 
 userSchema.methods.setPassword = function(password){

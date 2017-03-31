@@ -27,6 +27,7 @@ passport.use('local-signup', new LocalStrategy(
                 newUser.local.username = username;
                 newUser.setPassword(password);
                 newUser.online = true;
+                newUser.friends = [];
 
                 // save the user
                 newUser.save(function(err) {

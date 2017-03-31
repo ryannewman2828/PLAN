@@ -53,8 +53,7 @@ module.exports.register = function(req, res) {
                     }
                 })(req, res);
             } else {
-                res.status(400);
-                res.json({
+                res.status(400).json({
                     "errorMessage" : errorMessage
                 });
             }
