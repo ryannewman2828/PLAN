@@ -15,6 +15,24 @@ describe('Profile Read', function() {
                 done();
             });
     });
+    it('should return a 400 when given an incorrect token /profile GET', function(done) {
+        chai.request(app)
+            .get('/api/profile')
+            .set('Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+                'eyJfaWQiOiI1OGUwMjVhMmMwZGViNzBjNTQ5MWY4MzQ' +
+                'iLCJ1c2VybmFtZSI6InRlc3RlciIsImV4cCI6MTQ5MT' +
+                'Y4OTUwNiwiaWF0IjoxNDkxMDg0NzA2fQ.' +
+                'djaXe_inBp9X3DbsSMOeHl8qfk32l9ig6G6-B9dLrUM')
+            .end(function(err, res){
+                res.should.be.json;
+                res.body.should.be.a('object');
+                res.body.message.should.be.a('string');
+                res.body.message.should.be.equal('InvalidRequestError: Invalid Token');
+                res.should.have.status(400);
+                done();
+            });
+    });
     it('should return the user when authenticated on /profile GET', function (done) {
         var user = testBase.createUser('tester', false, []);
         var jwt = user.generateJwt();
@@ -35,26 +53,16 @@ describe('Profile Read', function() {
                 done();
             });
     });
-    it('should return a 400 when given an incorrect token /profile GET', function(done) {
-        chai.request(app)
-            .get('/api/profile')
-            .set('Authorization',
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
-                'eyJfaWQiOiI1OGUwMjVhMmMwZGViNzBjNTQ5MWY4MzQ' +
-                'iLCJ1c2VybmFtZSI6InRlc3RlciIsImV4cCI6MTQ5MT' +
-                'Y4OTUwNiwiaWF0IjoxNDkxMDg0NzA2fQ.' +
-                'djaXe_inBp9X3DbsSMOeHl8qfk32l9ig6G6-B9dLrUM')
-            .end(function(err, res){
-                res.should.be.json;
-                res.body.should.be.a('object');
-                res.body.message.should.be.a('string');
-                res.body.message.should.be.equal('InvalidRequestError: Invalid Token');
-                res.should.have.status(400);
-                done();
-            });
-    });
     afterEach(function(done){
         testBase.deleteUsers();
         done();
     });
+});
+
+describe('Online Profile Read', function() {
+    it('should give a 401 if not authenticated on /profile/online GET');
+    it('should return a 400 when given an incorrect token /profile GET');
+    it('should return the online users when authenticated on /profile/online GET');
+    it('should return nothing if everyone is offline on /profile/online GET');
+    it('should return everything if everyone is online on /profile/online GET');
 });

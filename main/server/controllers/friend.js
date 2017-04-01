@@ -13,6 +13,10 @@ module.exports.viewFriends = function (req, res) {
             .exec(function(err, user) {
                 if (err) {
                     res.status(400).json(err);
+                } else if (!user) {
+                    res.status(400).json({
+                        "message" : "InvalidRequestError: Invalid Token"
+                    });
                 } else {
                     User
                         .find({_id: {$in: user.friends}})
@@ -147,6 +151,9 @@ module.exports.acceptFriendRequest = function (req, res) {
                                 user.save();
                             }
                         });
+                    res.status(200).json({
+                        "message" : "Accepted successfully"
+                    });
                 } else {
                     res.status(400).json({
                         "message" : "InvalidResponseError: No Friend Request"
@@ -167,9 +174,10 @@ module.exports.declineFriendRequest = function (req, res) {
             "message" : "InvalidRequestError: missing ID"
         });
     } else {
-        FriendRequest
-            .find({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]})
-            .remove();
+        FriendRequest.remove({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]});
+        res.status(200).json({
+            "message" : "Declined successfully"
+        });
     }
 };
 
