@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 var User = require('../main/server/model/users');
 var user = mongoose.model('User');
 
@@ -336,3 +336,4 @@ describe('Friend', function() {
             });
     });
 });
+*/

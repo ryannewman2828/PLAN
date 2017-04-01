@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./main/bin/www",
-    "test": "webdriver-manager start && protractor conf.js"
+    "test": "mocha tests/UnitTests/**/*.js --timeout 120000"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -38,7 +38,7 @@
     "gulp-imagemin": "^3.0.3",
     "gulp-sass": "^2.3.2",
     "gulp-cache": "^0.4.5",
-    "mockgoose-mongoose4": "^2.1.1",
+    "mockgoose": "^7.1.0",
     "selenium-webdriver": "^2.53.3"
   }
 }

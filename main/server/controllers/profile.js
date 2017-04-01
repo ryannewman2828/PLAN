@@ -15,6 +15,10 @@ module.exports.profileRead = function(req, res) {
             .exec(function(err, user) {
                 if (err) {
                     res.status(400).json(err);
+                } else if(!user) {
+                    res.status(400).json({
+                       "message" : "InvalidRequestError: Invalid Token"
+                    });
                 } else {
                     res.status(200).json(user);
                 }

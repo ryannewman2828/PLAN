@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 var User = require('../main/server/model/users');
 
 process.env.mode = 'TESTING';
@@ -269,3 +269,4 @@ describe('Register', function() {
             })
     });
 });
+*/
