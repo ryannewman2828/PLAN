@@ -5,17 +5,17 @@ var FriendRequest = mongoose.model('FriendRequest');
 module.exports.viewFriends = function (req, res) {
     if (!req.payload._id) {
         res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
+            "message": "UnauthorizedError: private profile"
         });
     } else {
         User
             .findById(req.payload._id)
-            .exec(function(err, user) {
+            .exec(function (err, user) {
                 if (err) {
                     res.status(400).json(err);
                 } else if (!user) {
                     res.status(400).json({
-                        "message" : "InvalidRequestError: Invalid Token"
+                        "message": "InvalidRequestError: Invalid Token"
                     });
                 } else {
                     User
@@ -38,14 +38,18 @@ module.exports.viewFriends = function (req, res) {
 module.exports.viewOnlineFriends = function (req, res) {
     if (!req.payload._id) {
         res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
+            "message": "UnauthorizedError: private profile"
         });
     } else {
         User
             .findById(req.payload._id)
-            .exec(function(err, user) {
+            .exec(function (err, user) {
                 if (err) {
                     res.status(400).json(err);
+                } else if (!user) {
+                    res.status(400).json({
+                        "message": "InvalidRequestError: Invalid Token"
+                    });
                 } else {
                     User
                         .find({$and: [{_id: {$in: user.friends}}, {online: true}]})
@@ -54,7 +58,7 @@ module.exports.viewOnlineFriends = function (req, res) {
                                 res.status(400).json(err);
                             } else {
                                 friends = friends.map(function (friend) {
-                                    return friend.username;
+                                    return friend.local.username;
                                 });
                                 res.status(200).json(friends);
                             }
@@ -67,133 +71,197 @@ module.exports.viewOnlineFriends = function (req, res) {
 module.exports.sendFriendRequest = function (req, res) {
     if (!req.payload._id) {
         res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
-        });
-    } else if (!req.params.id) {
-        res.status(400).json({
-            "message" : "InvalidRequestError: missing ID"
+            "message": "UnauthorizedError: private profile"
         });
     } else {
-        FriendRequest
-            .find({$and: [{requesterID: req.payload._id}, {recipientID: req.params.id}]})
-            .exec(function (err, request) {
+        User
+            .findById(req.payload._id)
+            .exec(function (err, user) {
                 if (err) {
                     res.status(400).json(err);
-                } else if (request) {
+                } else if (!user) {
                     res.status(400).json({
-                        "message" : "InvalidResponseError: Friend Request Already Sent"
+                        "message": "InvalidRequestError: Invalid Token"
                     });
                 } else {
-                    FriendRequest
-                        .find({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]})
-                        .exec(function (err, request) {
+                    User
+                        .findById(req.params.id)
+                        .exec(function (err, user) {
                             if (err) {
                                 res.status(400).json(err);
-                            } else if (request) {
+                            } else if (!user) {
                                 res.status(400).json({
-                                    "message" : "InvalidResponseError: Friend Request Already Sent to this User"
+                                    "message": "InvalidRequestError: Invalid :id"
                                 });
                             } else {
-                                var newFriendRequest = new FriendRequest();
+                                FriendRequest
+                                    .findOne({$and: [{requesterID: req.payload._id}, {recipientID: req.params.id}]})
+                                    .exec(function (err, request) {
+                                        if (err) {
+                                            res.status(400).json(err);
+                                        } else if (request) {
+                                            console.log(request);
+                                            res.status(400).json({
+                                                "message": "InvalidResponseError: Friend Request Already Sent"
+                                            });
+                                        } else {
+                                            FriendRequest
+                                                .findOne({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]})
+                                                .exec(function (err, request) {
+                                                    if (err) {
+                                                        res.status(400).json(err);
+                                                    } else if (request) {
+                                                        res.status(400).json({
+                                                            "message": "InvalidResponseError: Friend Request Already Sent to this User"
+                                                        });
+                                                    } else {
+                                                        var newFriendRequest = new FriendRequest();
 
-                                newFriendRequest.requesterID = request.payload._id;
-                                newFriendRequest.recipientID = request.params.id;
+                                                        newFriendRequest.requesterID = req.payload._id;
+                                                        newFriendRequest.recipientID = req.params.id;
 
-                                newFriendRequest.save(function(err) {
-                                    if (err) {
-                                        res.status(400).json(err);
-                                    } else {
-                                        res.status(201).json({
-                                            "message" : "Request Sent Successfully"
-                                        })
-                                    }
-                                });
+                                                        newFriendRequest.save(function (err) {
+                                                            if (err) {
+                                                                res.status(400).json(err);
+                                                            } else {
+                                                                res.status(201).json({
+                                                                    "message": "Request Sent Successfully"
+                                                                })
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                        }
+                                    });
                             }
-                        })
+                        });
                 }
-            })
+            });
     }
 };
 
 module.exports.acceptFriendRequest = function (req, res) {
     if (!req.payload._id) {
         res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
-        });
-    } else if (!req.params.id) {
-        res.status(400).json({
-            "message" : "InvalidRequestError: missing ID"
+            "message": "UnauthorizedError: private profile"
         });
     } else {
-        FriendRequest
-            .find({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]})
-            .exec(function (err, request) {
+        User
+            .findById(req.payload._id)
+            .exec(function (err, user) {
                 if (err) {
                     res.status(400).json(err);
-                } else if (request) {
+                } else if (!user) {
+                    res.status(400).json({
+                        "message": "InvalidRequestError: Invalid Token"
+                    });
+                } else {
                     User
                         .findById(req.params.id)
                         .exec(function (err, user) {
                             if (err) {
                                 res.status(400).json(err);
+                            } else if (!user) {
+                                res.status(400).json({
+                                    "message": "InvalidRequestError: Invalid :id"
+                                });
                             } else {
-                                user.friends = user.friends.append(req.payload._id);
-                                user.save();
+                                FriendRequest
+                                    .findOne({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]})
+                                    .exec(function (err, request) {
+                                        if (err) {
+                                            res.status(400).json(err);
+                                        } else if (request) {
+                                            User
+                                                .findById(req.params.id)
+                                                .exec(function (err, user) {
+                                                    if (err) {
+                                                        res.status(400).json(err);
+                                                    } else {
+                                                        user.friends.push(req.payload._id);
+                                                        user.save();
+                                                    }
+                                                });
+                                            User
+                                                .findById(req.payload._id)
+                                                .exec(function (err, user) {
+                                                    if (err) {
+                                                        res.status(400).json(err);
+                                                    } else {
+                                                        user.friends.push(req.params.id);
+                                                        user.save();
+                                                    }
+                                                });
+                                            res.status(200).json({
+                                                "message": "Accepted successfully"
+                                            });
+                                        } else {
+                                            res.status(400).json({
+                                                "message": "InvalidResponseError: No Friend Request"
+                                            })
+                                        }
+                                    });
+                                FriendRequest.remove({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]});
                             }
                         });
-                    User
-                        .findById(req.payload._id)
-                        .exec(function (err, user) {
-                            if (err) {
-                                res.status(400).json(err);
-                            } else {
-                                user.friends = user.friends.append(req.params.id);
-                                user.save();
-                            }
-                        });
-                    res.status(200).json({
-                        "message" : "Accepted successfully"
-                    });
-                } else {
-                    res.status(400).json({
-                        "message" : "InvalidResponseError: No Friend Request"
-                    })
                 }
-            })
-            .remove();
+            });
     }
 };
 
 module.exports.declineFriendRequest = function (req, res) {
     if (!req.payload._id) {
         res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
-        });
-    } else if (!req.params.id) {
-        res.status(400).json({
-            "message" : "InvalidRequestError: missing ID"
+            "message": "UnauthorizedError: private profile"
         });
     } else {
-        FriendRequest.remove({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]});
-        res.status(200).json({
-            "message" : "Declined successfully"
-        });
+        User
+            .findById(req.payload._id)
+            .exec(function (err, user) {
+                if (err) {
+                    res.status(400).json(err);
+                } else if (!user) {
+                    res.status(400).json({
+                        "message": "InvalidRequestError: Invalid Token"
+                    });
+                } else {
+                    User
+                        .findById(req.params.id)
+                        .exec(function (err, user) {
+                            if (err) {
+                                res.status(400).json(err);
+                            } else if (!user) {
+                                res.status(400).json({
+                                    "message": "InvalidRequestError: Invalid :id"
+                                });
+                            } else {
+                                FriendRequest.remove({$and: [{requesterID: req.params.id}, {recipientID: req.payload._id}]});
+                                res.status(200).json({
+                                    "message": "Declined successfully"
+                                });
+                            }
+                        });
+                }
+            });
     }
 };
 
 module.exports.friendRequests = function (req, res) {
     if (!req.payload._id) {
         res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
+            "message": "UnauthorizedError: private profile"
         });
     } else {
         FriendRequest
             .find({recipientID: req.payload._id})
-            .exec(function (err, request) {
+            .exec(function (err, requests) {
                 if (err) {
                     res.status(400).json(err);
                 } else {
-                    res.status(200).json(request);
+                    requests = requests.map(function (request) {
+                        return request.requesterID;
+                    });
+                    res.status(200).json(requests);
                 }
             })
     }
@@ -202,16 +270,20 @@ module.exports.friendRequests = function (req, res) {
 module.exports.sentRequests = function (req, res) {
     if (!req.payload._id) {
         res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
+            "message": "UnauthorizedError: private profile"
         });
     } else {
         FriendRequest
             .find({requesterID: req.payload._id})
-            .exec(function (err, request) {
+            .exec(function (err, requests) {
                 if (err) {
                     res.status(400).json(err);
                 } else {
-                    res.status(200).json(request);
+                    requests = requests.map(function (request) {
+                        return request.recipientID;
+                    });
+                    console.log(requests);
+                    res.status(200).json(requests);
                 }
             })
     }

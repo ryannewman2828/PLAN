@@ -80,8 +80,8 @@ describe('Online Profile Read', function() {
                 res.should.have.status(200);
                 res.should.be.json;
                 res.body.should.be.a('array');
-                res.body.should.contain('tester1');
-                res.body.should.contain('tester3');
+                res.body.should.include('tester1');
+                res.body.should.include('tester3');
                 done();
             });
     });
@@ -113,9 +113,9 @@ describe('Online Profile Read', function() {
                 res.should.have.status(200);
                 res.should.be.json;
                 res.body.should.be.a('array');
-                res.body.should.contain('tester1');
-                res.body.should.contain('tester2');
-                res.body.should.contain('tester3');
+                res.body.should.include('tester1');
+                res.body.should.include('tester2');
+                res.body.should.include('tester3');
                 done();
             });
     });

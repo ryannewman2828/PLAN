@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Mockgoose = require('mockgoose').Mockgoose;
 var mockgoose = new Mockgoose(mongoose);
 var User = require('../../../main/server/model/users');
+var FriendRequest = require('../../../main/server/model/friendRequest');
 
 process.env.mode = 'TESTING';
 
@@ -23,12 +24,22 @@ module.exports.createUser = function (username, online, friends) {
 
 };
 
-module.exports.deleteUser = function (id) {
-    User.remove({_id: id}, function(err) {});
+module.exports.createFriendRequest = function (sender, sentTo) {
+    var newRequest = new FriendRequest();
+
+    newRequest.requesterID = sender;
+    newRequest.recipientID = sentTo;
+
+    newRequest.save();
+    return newRequest;
 };
 
 module.exports.deleteUsers = function () {
     User.remove({}, function(err) {});
+};
+
+module.exports.deleteRequests = function () {
+    FriendRequest.remove({}, function(err) {});
 };
 
 module.exports.addFriend = function (username, id) {

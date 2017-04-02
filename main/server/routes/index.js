@@ -26,6 +26,6 @@ router.get('/friends/request/:id', auth, ctrlFriend.sendFriendRequest);
 router.get('/friends/accept/:id', auth, ctrlFriend.acceptFriendRequest);
 router.get('/friends/decline/:id', auth, ctrlFriend.declineFriendRequest);
 router.get('/friends/requests/get', auth, ctrlFriend.friendRequests);
-router.get('/friends/requests/sent', auth, ctrlFriend.sendFriendRequest);
+router.get('/friends/requests/sent', auth, ctrlFriend.sentRequests);
 
 module.exports = router;
