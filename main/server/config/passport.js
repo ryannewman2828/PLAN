@@ -12,11 +12,10 @@ var configAuth = require('./auth');
 
 passport.use('local-signup', new LocalStrategy(
     function(username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
+        User.findOne({'local.username': username }, function (err, user) {
             if (err) {
                 return done(err);
             }
-
             if (user) {
                 return done(null, false, {
                     "message": "InvalidResponseError: User Already Exists"
