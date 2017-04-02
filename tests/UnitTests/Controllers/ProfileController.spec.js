@@ -69,9 +69,9 @@ describe('Online Profile Read', function() {
             });
     });
     it('should return the online users when authenticated on /profile/online GET', function (done) {
-        user1 = testBase.createUser('tester1', true, []);
-        user2 = testBase.createUser('tester2', false, []);
-        user3 = testBase.createUser('tester3', true, []);
+        var user1 = testBase.createUser('tester1', true, []);
+        testBase.createUser('tester2', false, []);
+        testBase.createUser('tester3', true, []);
         jwt = user1.generateJwt();
         chai.request(app)
             .get('/api/profile/online')
@@ -86,9 +86,9 @@ describe('Online Profile Read', function() {
             });
     });
     it('should return nothing if everyone is offline on /profile/online GET', function (done) {
-        user1 = testBase.createUser('tester1', false, []);
-        user2 = testBase.createUser('tester2', false, []);
-        user3 = testBase.createUser('tester3', false, []);
+        var user1 = testBase.createUser('tester1', false, []);
+        testBase.createUser('tester2', false, []);
+        testBase.createUser('tester3', false, []);
         jwt = user1.generateJwt();
         chai.request(app)
             .get('/api/profile/online')
@@ -102,9 +102,9 @@ describe('Online Profile Read', function() {
             });
     });
     it('should return everything if everyone is online on /profile/online GET', function (done) {
-        user1 = testBase.createUser('tester1', true, []);
-        user2 = testBase.createUser('tester2', true, []);
-        user3 = testBase.createUser('tester3', true, []);
+        var user1 = testBase.createUser('tester1', true, []);
+        testBase.createUser('tester2', true, []);
+        testBase.createUser('tester3', true, []);
         jwt = user1.generateJwt();
         chai.request(app)
             .get('/api/profile/online')

@@ -19,8 +19,8 @@ module.exports.createUser = function (username, online, friends) {
     newUser.friends = friends;
 
     newUser.save();
-
     return newUser;
+
 };
 
 module.exports.deleteUser = function (id) {
@@ -29,4 +29,19 @@ module.exports.deleteUser = function (id) {
 
 module.exports.deleteUsers = function () {
     User.remove({}, function(err) {});
+};
+
+module.exports.addFriend = function (username, id) {
+    User
+        .findOne({"local.username": username})
+        .exec(function (err, user) {
+            if (err) {
+                console.log(err)
+            } else if (!user) {
+                console.log('user not found')
+            } else {
+                user.friends = user.friends.append(id);
+                user.save();
+            }
+        })
 };

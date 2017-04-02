@@ -25,7 +25,7 @@ module.exports.viewFriends = function (req, res) {
                                 res.status(400).json(err);
                             } else {
                                 friends = friends.map(function (friend) {
-                                    return friend.username;
+                                    return friend.local.username;
                                 });
                                 res.status(200).json(friends);
                             }
