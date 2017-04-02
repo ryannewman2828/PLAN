@@ -20,8 +20,8 @@ describe('View Online Friends', function() {
     it('should return the online friends when authenticated on /friends/online GET');
     it('should return nothing if everyone is online but not your friend on /friends/online GET');
     it('should return nothing if everyone is your friend but not online on /friends/online GET');
-    it('should return everything if everyone is your friend and online on /friends GET');
-    it('should return only online friends if you have offline friend and online non-friends /friends GET');
+    it('should return everything if everyone is your friend and online on /friends/online GET');
+    it('should return only online friends if you have offline friend and online non-friends /friends/online GET');
 });
 
 describe('Send Friend Request', function() {
