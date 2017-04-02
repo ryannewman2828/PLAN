@@ -36,7 +36,7 @@ module.exports.onlineUsers = function (req, res) {
         User
             .find({online : true})
             .exec(function(err, users) {
-                if (err){
+                if (err) {
                     res.status(400).json(err);
                 } else {
                     users = users.map(function (user) {
