@@ -19,7 +19,7 @@ passport.use('local-signup', new LocalStrategy(
 
             if (user) {
                 return done(null, false, {
-                    message: 'User already exists'
+                    "message": "InvalidResponseError: User Already Exists"
                 });
             } else {
                 var newUser = new User();
@@ -50,13 +50,13 @@ passport.use('local-login', new LocalStrategy(
 
             if (!user) {
                 return done(null, false, {
-                    message: "User doesn't exists"
+                    "message": "InvalidResponseError: User doesn't exists"
                 });
             }
 
             if (!user.verifyPassword(password)) {
                 return done(null, false, {
-                    message: "Password isn't correct"
+                    "message": "InvalidResponseError: Password isn't correct"
                 });
             }
 

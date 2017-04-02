@@ -15,20 +15,15 @@
             password : "",
             confirmPass : ""
         };
-
-
-        var onError = function (err) {
-            console.log('Registration failed due to incorrect field values');
-            $scope.errorPresent = true;
-            $scope.errorMsg = err.errorMessage;
-        };
         
         $scope.onSubmit = function () {
             console.log('Checking registration...');
 
             authentication
                 .register($scope.credentials)
-                .error(onError)
+                .error(function(err){
+                    alert(err.message);
+                })
                 .then(function () {
                     $location.path('profile');
                     console.log('Submitting registration');
