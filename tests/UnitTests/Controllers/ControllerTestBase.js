@@ -6,7 +6,7 @@ var User = require('../../../main/server/model/users');
 process.env.mode = 'TESTING';
 
 mockgoose.prepareStorage().then(function() {
-    mongoose.connect('mongodb://localhost/plan');
+    mongoose.connect('mongodb://localhost/plan-test');
 });
 
 // Creates a user, stores it in the mocked database and returns it
