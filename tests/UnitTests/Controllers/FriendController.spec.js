@@ -466,7 +466,6 @@ describe('View Friend Requests', function () {
             .get('/api/friends/requests/get')
             .set('Authorization', 'Bearer ' + jwt)
             .end(function (err, res) {
-                //console.log(res.body)
                 res.should.have.status(200);
                 res.should.be.json;
                 res.body.should.be.a('array');

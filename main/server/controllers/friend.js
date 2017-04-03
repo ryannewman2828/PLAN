@@ -100,7 +100,6 @@ module.exports.sendFriendRequest = function (req, res) {
                                         if (err) {
                                             res.status(400).json(err);
                                         } else if (request) {
-                                            console.log(request);
                                             res.status(400).json({
                                                 "message": "InvalidResponseError: Friend Request Already Sent"
                                             });
@@ -282,7 +281,6 @@ module.exports.sentRequests = function (req, res) {
                     requests = requests.map(function (request) {
                         return request.recipientID;
                     });
-                    console.log(requests);
                     res.status(200).json(requests);
                 }
             })
