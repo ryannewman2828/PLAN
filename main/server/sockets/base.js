@@ -30,10 +30,6 @@ module.exports = function (io) {
                 socket.uid = id;
             }
         });
-        //User.findById(socket.uid).exec(function (err, user) {
-        //    console.log('emitting socket');
-        //    socket.broadcast.emit('update_list', user.local.username);
-        //});
         socket.on('disconnect', function() {
             User.update({_id : socket.uid}, {online : false}, function (err) {
                 if (err) {

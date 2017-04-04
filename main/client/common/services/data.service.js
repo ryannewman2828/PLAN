@@ -23,9 +23,18 @@
             });
         };
 
+        var getOnlineFriends = function () {
+            return $http.get('/api/friends/online', {
+                headers: {
+                    Authorization: 'Bearer '+ authentication.getToken()
+                }
+            });
+        };
+
         return {
             getProfile : getProfile,
-            getOnlineUsers : getOnlineUsers
+            getOnlineUsers : getOnlineUsers,
+            getOnlineFriends: getOnlineFriends
         };
     }
 

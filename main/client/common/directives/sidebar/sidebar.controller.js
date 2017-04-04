@@ -8,7 +8,7 @@
     function sidebarCtrl($rootScope, authentication, planData, socketFact) {
         $rootScope.isLoggedIn = authentication.isLoggedIn;
         $rootScope.onlineUsers = [];
-        planData.getOnlineUsers()
+        planData.getOnlineFriends()
             .success(function (data) {
                 $rootScope.onlineUsers = data;
             })
