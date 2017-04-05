@@ -4,8 +4,15 @@
         .module('plan')
         .controller('profileCtrl', profileCtrl);
 
-    profileCtrl.$inject = ['$scope', '$location', 'planData', 'authentication'];
-    function profileCtrl($scope, $location, planData, authentication) {
+    profileCtrl.$inject = ['$scope', '$location', '$routeParams', 'planData', 'authentication'];
+    function profileCtrl($scope, $location, $routeParams, planData, authentication) {
+
+        var username = $routeParams.view;
+        $scope.myProfile = true;
+
+        if (username) {
+            $scope.myProfile = false;
+        }
 
         $scope.user = {};
 

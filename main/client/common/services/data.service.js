@@ -7,12 +7,20 @@
     planData.$inject = ['$http', 'authentication'];
     function planData ($http, authentication) {
 
-        var getProfile = function () {
-            return $http.get('/api/profile', {
-                headers: {
-                    Authorization: 'Bearer '+ authentication.getToken()
-                }
-            });
+        var getProfile = function (username) {
+            if (username) {
+                return $http.get('/api/profile?user=' + username, {
+                    headers: {
+                        Authorization: 'Bearer ' + authentication.getToken()
+                    }
+                });
+            } else {
+                return $http.get('/api/profile', {
+                    headers: {
+                        Authorization: 'Bearer ' + authentication.getToken()
+                    }
+                });
+            }
         };
 
         var getOnlineUsers = function () {
